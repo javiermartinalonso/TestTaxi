@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+    version="2.1">
+
+	<!-- ******* ZONA DE MANAGEDBEAN ********** -->
+	<!-- CONTROL DE CREDENCIALES -->
+	<managed-bean>
+		<description>GESTION DEL PROCESO DE AUTENTICACION DEL USUARIO</description>
+		<managed-bean-name>login_bean</managed-bean-name>
+		<managed-bean-class>com.testtaxi.jsf.managedbean.Login_Bean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>f_usuarios</property-name>
+			<value>#{f_usuarios}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- CONTROL DE IDIOMATIZACION 
+	<managed-bean>
+		<description>GESTION DEL IDIOMATIZACION</description>
+		<managed-bean-name>idioma_bean</managed-bean-name>
+		<managed-bean-class>com.testtaxi.jsf.managedbean.Idioma_Bean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>	-->
+	
+	<!-- CONTROL DE MENU -->
+	<managed-bean>
+		<description>CREACION DEL MENU PERSONALIZADO DE CADA USUARIO</description>
+		<managed-bean-name>menu_bean</managed-bean-name>
+		<managed-bean-class>com.testtaxi.jsf.managedbean.Menu_Bean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>	
+	
+
+	<!-- CONTROL DE MENU 
+	<managed-bean>
+		<description>BEAN PARA CONTROLAR EL CIERRE DE SESIÓN</description>
+		<managed-bean-name>salir_bean</managed-bean-name>
+		<managed-bean-class>com.testtaxi.jsf.managedbean.Salir_Bean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>		
+	-->
+	<!-- PREGUNTA	
+	<managed-bean>
+		<description>PREGUNTA TEST</description>
+		<managed-bean-name>pregunta_test</managed-bean-name>
+		<managed-bean-class>com.testtaxi.jsf.managedbean.Pregunta_Test_Bean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>	
+	 -->
+	
+
+	<managed-bean>
+		<description>PLANTILLA LISTA POR TIPO TEST</description>
+		<managed-bean-name>test_lista_bean</managed-bean-name>
+		<managed-bean-class>com.testtaxi.jsf.managedbean.Test_lista_Bean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>	
+
+	
+	
+	<!-- TEST_GENERICO -->	
+	<managed-bean>
+		<description>PLANTILLA TEST GENERICO</description>
+		<managed-bean-name>test_generico</managed-bean-name>
+		<managed-bean-class>com.testtaxi.jsf.managedbean.TestGenerico_Bean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>		
+
+
+	
+	<!-- TEST_GENERICO -->	
+	<managed-bean>
+		<description>PLANTILLA EXAMEN GENERICO</description>
+		<managed-bean-name>examen_generico</managed-bean-name>
+		<managed-bean-class>com.testtaxi.jsf.managedbean.ExamenGenerico_Bean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>	
+	
+	
+	<!-- CONTROL DEL PROCESO CRUD DE USUARIOS -->
+	<managed-bean>
+		<description>Gestion de los procesos de bd de usuarios</description>
+		<managed-bean-name>usuario_bean</managed-bean-name>
+		<managed-bean-class>com.testtaxi.jsf.managedbean.Usuarios_Bean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<managed-property>
+			<property-name>f_usuarios</property-name>
+			<value>#{f_usuarios}</value>
+		</managed-property>
+	</managed-bean>	
+
+
+	<!-- CONTROL DEL PROCESO CRUD DE TESTS -->
+	<managed-bean>
+		<description>Gestion de los procesos de bd de test</description>
+		<managed-bean-name>test_bean</managed-bean-name>
+		<managed-bean-class>com.testtaxi.jsf.managedbean.Test_Bean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<managed-property>
+			<property-name>f_tests</property-name>
+			<value>#{f_tests}</value>
+		</managed-property>
+	</managed-bean>		
+	
+	
+	<!-- CONTROL DEL PROCESO CRUD DE PREGUNTAS -->
+	<managed-bean>
+		<description>Gestion de los procesos de bd de preguntas</description>
+		<managed-bean-name>preguntas_bean</managed-bean-name>
+		<managed-bean-class>com.testtaxi.jsf.managedbean.Gest_Preguntas_Bean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<managed-property>
+			<property-name>f_preguntas</property-name>
+			<value>#{f_preguntas}</value>
+		</managed-property>
+	</managed-bean>	
+	<!-- LISTA DE MANAGEDBEAN GESTIONADOS DIRECTAMENTE POR SPRING -->
+	<!-- 
+		IDIOMA_BEAN 
+		MENSAJES_BEAN 
+	-->
+
+	
+	<!-- ***** FIN ZONA DE MANAGEDBEAN ******** -->
+
+
+
+
+
+   
+   
+
+	<!-- *** MODIFICACION DE PARAMETROS DE FUNCIONAMIENTO DE JSF *** -->
+	<application>
+		<!-- CAMBIAMOS EL CONSTRUCTOR DE MANAGEDBEANS POR APPLICATIONCONTEXT DE 
+			SPRING PARA PODER INYECTAR PROPIEDADES DESDE SPRING -->
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+	</application>
+	<navigation-rule>
+		<display-name>xhtml/test/test.xhtml</display-name>
+		<from-view-id>/xhtml/test/test.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>#{test_generico.calcular_resultado_test}</from-outcome>
+			<to-view-id>/xhtml/test/correccion.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+</faces-config>

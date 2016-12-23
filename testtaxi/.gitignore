@@ -1,3 +1,8 @@
 /target/
 /.settings
 /.metadata
+/.classpath
+/.myhibernatedata
+/.myumldata
+/.project
+/.springBeans
