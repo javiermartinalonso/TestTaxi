@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+	<h:form id="formu_vencimientos">
+		<ace:panel id="panel_fechas" header="MODIFICACION DE FECHAS">
+			<h:panelGrid columns="4">
+				<h:outputText id="eti_fecha_inicial"
+					value="#{idioma['eti.fechainicial']}" />
+				<ace:dateTimeEntry value="#{vencimientos_bean.primer_diames}"
+					locale="es" renderAsPopup="true" id="fecha_inicial"
+					pattern="dd/MM/yyyy">
+					<ace:ajax event="dateSelect"
+						listener="#{vencimientos_bean.cambiar_Fecha}" />
+				</ace:dateTimeEntry>
+				<h:outputText id="eti_fecha_final"
+					value="#{idioma['eti.fechafinal']}" />
+				<ace:dateTimeEntry value="#{vencimientos_bean.ultimo_dia}"
+					locale="es" renderAsPopup="true" id="fecha_final"
+					pattern="dd/MM/yyyy">
+					<ace:ajax event="dateSelect"
+						listener="#{vencimientos_bean.cambiar_Fecha}" />
+				</ace:dateTimeEntry>
+			</h:panelGrid>
+		</ace:panel>
+
+
+
+		<ace:dataTable id="tabla_vencimientos"
+			value="#{vencimientos_bean.lista_vencimientos}" var="vencimiento"
+			rows="15" paginatorPosition="bottom" paginatorAlwaysVisible="true">
+			<ace:columnGroup id="cabecera_tabla" type="header">
+				<ace:row>
+					<ace:column id="texto_cabecera" colspan="8"
+						headerText="Casacion de vencimientos" />
+				</ace:row>
+				<ace:row>
+					<ace:column id="texto_col_mostrar"
+						headerText="#{idioma['cab.mostrar']}" />
+					<ace:column id="texto_col_codigovenci"
+						filterBy="#{vencimiento.codigoVencimiento}"
+						headerText="#{idioma['cab.codigo_venci']}" />
+					<ace:column id="texto_col_cliente"
+						sortBy="#{vencimiento.clientes.nombreCliente}"
+						filterBy="#{vencimiento.clientes.nombreCliente}"
+						filterMatchMode="startsWith" headerText="#{idioma['cab.cliente']}" />
+					<ace:column id="texto_col_pedido"
+						headerText="#{idioma['cab.pedido']}" />
+					<ace:column id="texto_col_fechavencimiento"
+						headerText="#{idioma['cab.fecha_emision']}" />
+					<ace:column id="texto_col_cantidad"
+						headerText="#{idioma['cab.cantidad']}" />
+					<ace:column id="texto_col_fechaprevistapago"
+						headerText="#{idioma['cab.fecha_venci']}" />
+					<ace:column id="texto_col_fechapago"
+						headerText="#{idioma['cab.fecha_cobro']}" />
+				</ace:row>
+			</ace:columnGroup>
+
+			<ace:column id="mostrar_pedido">
+				<ace:expansionToggler id="selector_pedido"
+					changeListener="#{vencimientos_bean.recuperar_Pedido}" />
+			</ace:column>
+			<ace:column id="col_vencimiento">
+				<h:outputText id="codigo_vencimiento"
+					value="#{vencimiento.codigoVencimiento}" />
+			</ace:column>
+			<ace:column id="col_cliente">
+				<h:outputText id="cliente"
+					value="#{vencimiento.clientes.nombreCliente}" />
+			</ace:column>
+			<ace:column id="col_pedido">
+				<h:outputText id="pedido" value="#{vencimiento.pedido.numeroPedido}" />
+			</ace:column>
+			<ace:column id="col_fechavencimiento">
+				<h:outputText id="fecha_vencimiento"
+					value="#{vencimiento.pedido.fechaPedido}">
+					<f:convertDateTime type="date" />
+				</h:outputText>
+			</ace:column>
+			<ace:column id="col_cantidad">
+				<h:outputText id="cantidad"
+					value="#{vencimiento.cantidadVencimiento}">
+					<f:convertNumber type="currency" />
+				</h:outputText>
+			</ace:column>
+			<ace:column id="col_fechaprevistapago">
+				<h:outputText id="fechaprevista"
+					value="#{vencimiento.fechaVencimiento}">
+					<f:convertDateTime type="date" />
+				</h:outputText>
+			</ace:column>
+			<ace:column id="col_fechapago">
+				<ace:dateTimeEntry id="fecha_pago" locale="es" showWeek="true"
+					value="#{vencimiento.fechaCobroVencimiento}" renderAsPopup="true" />
+			</ace:column>
+			<ace:panelExpansion id="panel_pedido">
+				<ace:accordion id="contenido-pedido" collapsible="true"
+					activeIndex="-1">
+					<ace:accordionPane id="cabecera_pedido" title="Cabecera pedido">
+						<h:panelGrid columns="1" id="panel_cabecerapedido">
+							<h:panelGrid columns="6">
+								<h:outputText id="eti_codigo" value="Codigo" />
+								<h:outputText id="codigocliente"
+									value="#{vencimientos_bean.vencimiento_seleccionado.clientes.codigoCliente}" />
+								<h:outputText id="eti_nombre" value="Nombre" />
+								<h:outputText id="nombre"
+									value="#{vencimientos_bean.vencimiento_seleccionado.clientes.nombreCliente}" />
+								<h:outputText id="eti_cifnif" value="CIF/NIF" />
+								<h:outputText id="cifnif"
+									value="#{vencimientos_bean.vencimiento_seleccionado.clientes.cifCliente}" />
+							</h:panelGrid>
+							<h:panelGrid columns="4">
+								<h:outputText id="eti_direccion" value="Direccion" />
+								<h:outputText id="direccion"
+									value="#{vencimientos_bean.vencimiento_seleccionado.clientes.calleCliente}" />
+								<h:outputText id="eti_localidad" value="Localidad" />
+								<h:outputText id="localidad"
+									value="#{vencimientos_bean.vencimiento_seleccionado.clientes.ciudadCliente}" />
+							</h:panelGrid>
+							<h:panelGrid columns="8">
+								<h:outputText id="eti_provincia" value="Provincia" />
+								<h:outputText id="provincia"
+									value="#{vencimientos_bean.vencimiento_seleccionado.clientes.provinciaCliente}" />
+								<h:outputText id="eti_telefono" value="Telefono" />
+								<h:outputText id="telefono"
+									value="#{vencimientos_bean.vencimiento_seleccionado.clientes.telefonoCliente}" />
+								<h:outputText id="eti_fax" value="FAX" />
+								<h:outputText id="fax"
+									value="#{vencimientos_bean.vencimiento_seleccionado.clientes.faxCliente}" />
+								<h:outputText id="eti_codigopostal" value="Codigo postal" />
+								<h:outputText id="codigopostal"
+									value="#{vencimientos_bean.vencimiento_seleccionado.clientes.cpCliente}" />
+							</h:panelGrid>
+						</h:panelGrid>
+					</ace:accordionPane>
+					<ace:accordionPane id="cuerpo_pedido" title="Cuerpo pedido">
+						<ace:dataTable id="tabla_lineaspedido"
+							value="#{vencimientos_bean.lista_lineas}" var="lineapedido">
+							<ace:column id="col_codigoarticulo" headerText="Cod. Articulo">
+								<h:outputText id="codigoarticulo"
+									value="#{lineapedido.articulos.codigoArticulo}" />
+							</ace:column>
+							<ace:column id="col_descripcion" headerText="Descripcion">
+								<h:outputText id="descripcion"
+									value="#{lineapedido.articulos.descripcionArticulo}" />
+							</ace:column>
+							<ace:column id="col_precio" headerText="Precio">
+								<h:outputText id="precio"
+									value="#{lineapedido.precioUnidadArticulo}">
+									<f:convertNumber type="currency" />
+								</h:outputText>
+							</ace:column>
+							<ace:column id="col_unidades" headerText="Unidades">
+								<h:outputText id="unidades"
+									value="#{lineapedido.numeroUnidadesArticulo}" />
+							</ace:column>
+							<ace:column id="col_porcentajedescuento" headerText="Porcentaje">
+								<h:outputText id="procentaje"
+									value="#{lineapedido.porcentajeDescuento/100}">
+									<f:convertNumber type="percent" />
+								</h:outputText>
+							</ace:column>
+							<ace:column id="col_cantidaddescuento" headerText="Cantidad">
+								<h:outputText id="cantidadescuento"
+									value="#{(lineapedido.precioUnidadArticulo*lineapedido.numeroUnidadesArticulo)*(lineapedido.porcentajeDescuento/100)}">
+									<f:convertNumber type="currency" />
+								</h:outputText>
+							</ace:column>
+							<ace:column id="col_totallinea" headerText="Total">
+								<h:outputText id="totallinea"
+									value="#{(lineapedido.precioUnidadArticulo*lineapedido.numeroUnidadesArticulo)-((lineapedido.precioUnidadArticulo*lineapedido.numeroUnidadesArticulo)*(lineapedido.porcentajeDescuento/100))}">
+									<f:convertNumber type="currency" />
+								</h:outputText>
+							</ace:column>
+						</ace:dataTable>
+					</ace:accordionPane>
+					<ace:accordionPane id="pie_pedido" title="Pie pedido">
+						<h:panelGrid columns="4" id="primera_lineapie">
+							<h:outputText id="eti_porte" value="Portes pedido" />
+							<h:outputText id="porte"
+								value="#{vencimientos_bean.pedido_completado.portePedido}">
+								<f:convertNumber type="currency" />
+							</h:outputText>
+							<h:outputText id="eti_totalbruto" value="Total sin impuesto" />
+							<h:outputText id="totalbruto"
+								value="#{vencimientos_bean.pedido_completado.totalBrutoPedido}">
+								<f:convertNumber type="currency" />
+							</h:outputText>
+							<h:outputText id="eti_seguro" value="Seguro" />
+							<h:outputText id="seguro"
+								value="#{vencimientos_bean.pedido_completado.seguroPedido}">
+								<f:convertNumber type="currency" />
+							</h:outputText>
+							<h:outputText id="eti_porcentageiva" value="Porcentaje IVA" />
+							<h:outputText id="porcentageiva"
+								value="#{vencimientos_bean.pedido_completado.porcentajeIvaPedido/100}">
+								<f:convertNumber type="percent" />
+							</h:outputText>
+							<h:outputText id="eti_otros" value="Otros cargos" />
+							<h:outputText id="otros"
+								value="#{vencimientos_bean.pedido_completado.otrosCargosPedido}">
+								<f:convertNumber type="currency" />
+							</h:outputText>
+							<h:outputText id="eti_iva" value="IVA" />
+							<h:outputText id="iva"
+								value="#{vencimientos_bean.pedido_completado.ivaPedido}">
+								<f:convertNumber type="currency" />
+							</h:outputText>
+							<h:outputText id="eti_totalcargos" value="Total cargos" />
+							<h:outputText id="totalcargos"
+								value="#{vencimientos_bean.pedido_completado.totalCargosPedido}">
+								<f:convertNumber type="currency" />
+							</h:outputText>
+							<h:outputText id="eti_totalfactura" value="Total factura" />
+							<h:outputText id="totalfactura"
+								value="#{vencimientos_bean.pedido_completado.totalFacturaPedido}">
+								<f:convertNumber type="currency" />
+							</h:outputText>
+						</h:panelGrid>
+					</ace:accordionPane>
+				</ace:accordion>
+			</ace:panelExpansion>
+		</ace:dataTable>
+	</h:form>
+</ui:composition>

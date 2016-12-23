@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+	<f:loadBundle basename="#{idioma_bean.idioma_elegido}" var="idioma" />
+
+	<h:panelGrid columns="4">
+		<h:form id="formu_idioma">
+			<h:commandButton id="idioma_es" image="/imagenes/es.png"
+				value="#{idioma_bean.boton_idioma}"
+				actionListener="#{idioma_bean.cambiar_Idioma}" />
+			<h:commandButton id="idioma_en" image="/imagenes/gb.png"
+				value="#{idioma_bean.boton_idioma}"
+				actionListener="#{idioma_bean.cambiar_Idioma}" />
+			<h:commandButton id="idioma_fr" image="/imagenes/fr.png"
+				value="#{idioma_bean.boton_idioma}"
+				actionListener="#{idioma_bean.cambiar_Idioma}" />
+			<ace:themeSelect value="#{idioma_bean.tema}">
+				<ace:ajax onSuccess="location.reload();" />
+			</ace:themeSelect>
+			<!-- <f:ajax event="click" render="@all" execute="@this" /> -->
+		</h:form>
+	</h:panelGrid>
+</ui:composition>

@@ -1,0 +1,14 @@
+.ventana_login {
+	position: absolute;
+	width: 400px;
+	height: 180px;
+}
+
+.mensaje_icono {
+	text-align: right;
+}
+
+.mensaje_texto {
+	text-align: left;
+	display: block;
+}

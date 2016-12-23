@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+<f:view encoding="ISO-8859-15">
+	<h:head>
+		<!-- FORMATO PARA EL COMPONENTE DATETIMEENTRY -->
+		<h:outputScript name="javascript/funciones.js" />
+		<!-- ESTILOS PARA LA POSCION DE ALGUNOS CONTENEDORES -->
+		<ice:outputStyle href="/resources/css/posiciones.css"
+			id="estilos_pagina" />
+		<!-- REFRESCO DE TODOS LOS COMPONENTES DE CADA VISTA CON LA INFORMACION DE LA RESPUESTA AJAX -->
+		<icecore:config mandatoryResource="all" />
+	</h:head>
+	<h:body>
+		<ui:include src="/xhtml/mensajes.xhtml" />
+		<ui:include src="/xhtml/idioma.xhtml" />
+
+		<ace:panel id="ventana_login" visible="#{login_bean.login_visible}"
+			styleClass="ventana_login"
+			header="#{idioma['formu.login.eti.cabecerapanel']}">
+			<h:form id="formu_login">
+				<h:panelGrid id="panel_login" columns="2">
+					<h:outputText id="eti_nombre"
+						value="#{idioma['formu.login.eti.nombreusuario']}" />
+					<h:inputText id="nombre_usuario"
+						value="#{login_bean.nombre_usuario}" />
+					<h:outputText id="eti_clave"
+						value="#{idioma['formu.login.eti.claveusario']}" />
+					<h:inputText id="clave_usuario" value="#{login_bean.clave_usuario}" />
+					<h:commandButton id="boton_login"
+						value="#{idioma['formu.login.bot.comprobar']}"
+						actionListener="#{login_bean.comprobar_Credenciales}" />
+				</h:panelGrid>
+			</h:form>
+		</ace:panel>
+
+		<ui:include src="/xhtml/contenido_menu.xhtml" />
+
+	</h:body>
+</f:view>
+</html>

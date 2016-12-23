@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-autowire="byName" default-lazy-init="true"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- ACCESOS AL APLICATIONCONTEXT EN CUALQUIER PUNTO DE LA APLICACION -->
+	<bean id="acceso" class="com.atrium.spring.Acceso_ApplicationContext"
+		scope="singleton" lazy-init="false" />
+
+
+	<!-- CONTROL DE IDIOMA A USAR PARA CADA USUARIO -->
+	<bean id="idioma_bean" class="com.atrium.managedbean.Idioma_Bean"
+		scope="session">
+		<description>Gestion del cambio dinamico del idioma por usuario
+		</description>
+	</bean>
+	
+	<!-- MANEJO DE LOS MENSAJES EN LA APLICACION -->
+	<bean id="mensajes_bean" class="com.atrium.managedbean.Mensajes_Bean"
+		scope="session">
+		<description>Gestion del cambio dinamico del idioma por usuario
+		</description>
+	</bean>
+
+</beans>

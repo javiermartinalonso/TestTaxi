@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+    
+    <ace:panel id="panel_menudinamico" visible="#{menu_bean.visible}">
+		<h:panelGrid id="panel_cuerpo" columns="1">
+			<h:form id="formu_menuaplicacion">
+				<ace:menuBar id="barra_menu" model="#{menu_bean.menu_dinamicoace}"
+					autoSubmenuDisplay="true" />
+			</h:form>
+		</h:panelGrid>
+	</ace:panel>
+
+	<ace:panel id="panel_paginas" visible="#{menu_bean.visible}">
+		<ui:include src="#{menu_bean.pagina_elegida}" />
+	</ace:panel>
+</ui:composition>

@@ -1,0 +1,572 @@
+ARTICULOS
+
+63;prueba;1;22;
+22;Descripción 22 M;2345;5;
+24;Descripción 24 M;2222;8;
+101;impresora laser IBM modelo 23-htm tonner;252.25;35;
+102;Monitor LCD 27 pulgadas;138.88;126;
+103;Agenda años 2012 cuero negro;70.22;2500;
+104;Grapadora eléctrica con 250 grapas;35.66;520;
+105;Boligrafo de cuatro colores;10;300;
+106;Ordenador de sobremesa;300;800;
+107;Sujeta-papeles electrónico;250;900;
+201;Teclado Logitech color negro;80.66;800;
+202;Ratón zender c/rueda;15.45;600;
+401;Bolígrafo color azul;1.25;100;
+402;Bolígrafo color verde;1.1;200;
+403;Bolígrafo color rojo;1.12;300;
+404;Bolígrafo color negro;1.14;500;
+501;Monitor Suyama modelo cuadrado;33.69;750;
+502;Alfombrilla para ratón color azul;15.4;650;
+200;Articulo de papeleria;1;5;
+1001;Ordenador Acer + monitor TFT;895;20;
+1002;Ordenador IBM portatil THINK PAD;1025;35;
+44;Lápiz;1;20;
+45;Lápiz;1;20;
+
+
+AUTENTICACION_SERVICIOS
+
+apli_gestion;basico;1;
+apli_gestion;alto;10;
+apli_contabilidad;alto;10;
+apli_almacen;medio;5;
+apli_agenda;basico;1;
+
+AVION
+
+
+
+
+
+BANCOS
+
+2;el banco algo;madrid;1;1;1;1;21;
+21;El onrrado;<NULL>;25;10;5;10;21;
+25;Banco España;Calle Alcala;2312;2312;1;1;21;
+26;El onrrado;<NULL>;25;10;5;10;21;
+27;El onrrado;<NULL>;25;10;5;10;21;
+22;Banco jones;Isla de java;2;2;2;2;21;
+
+CALLES
+
+1;Roda Arriba;41440;<NULL>;6123;41;41;
+3;Calle Tercer Intento;41440;Lora Pueblo;6123;41;41;
+2;Roda Arriba;41440;<NULL>;6123;41;41;
+
+CLIENTES
+
+21;Juan;<NULL>;<NULL>;699727k;<NULL>;<NULL>;<NULL>;alfonso XIII;villaviciosa de odon;28670;Madrid;5555555;<NULL>;nexus2000@ole.com;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<Clob>;AC;
+22;alberto;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;Madrid;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<Clob>;AC;
+23;jose;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;Madrid;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<Clob>;AC;
+24;Pedro;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<Clob>;AC;
+25;Antonio;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<Clob>;AC;
+26;client3;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<Clob>;AC;
+27;client2;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;Madrid;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<Clob>;AC;
+28;client1;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;Madrid;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<Clob>;AC;
+
+
+FORMAS_PAGO
+
+1;Contado;AC;1;0;0;2008-01-01;<NULL>;
+2;Pre-Pago;AC;1;0;0;2008-01-01;<NULL>;
+3;A la entrega;AC;1;0;0;2008-01-01;<NULL>;
+10;50% contado 50% 30 dias;AC;2;30;0;2008-01-01;<NULL>;
+11;50% Pre-Pago 50% a la entrega;AC;2;30;0;2008-01-01;<NULL>;
+20;30 dias;AC;1;0;30;2008-01-01;<NULL>;
+21;30, 60 dias;AC;2;30;30;2008-01-01;<NULL>;
+22;30, 60 y 90 dias;AC;3;30;30;2008-01-01;<NULL>;
+23;30, 60, 90 y 180 dias;AC;4;30;30;2008-01-01;<NULL>;
+29;180 dias;AC;1;0;180;2008-01-01;<NULL>;
+
+
+FORMAS_PAGO_CLIENTE
+
+2;21;AC;2008-01-01;<NULL>;1;
+3;21;AC;2008-01-01;<NULL>;2;
+3;22;AC;2008-01-01;<NULL>;3;
+20;22;AC;2008-01-01;<NULL>;4;
+22;22;AC;2008-01-01;<NULL>;5;
+23;23;AC;2008-01-01;<NULL>;6;
+29;23;AC;2008-01-01;<NULL>;7;
+10;23;AC;2008-01-01;<NULL>;8;
+11;23;AC;2008-01-01;<NULL>;9;
+21;23;AC;2008-01-01;<NULL>;10;
+21;26;AC;2008-01-01;<NULL>;11;
+
+
+HIBERNATE_UNIQUE_KEY
+
+0
+
+LINEA_PEDIDO
+
+181;402;181;1.1;100;0;
+182;401;181;1.25;10;0;
+183;107;182;250;5;0;
+184;201;182;80.66;10;5;
+147;402;160;1.1;100;0;
+148;401;160;1.25;100;0;
+93;101;108;<NULL>;<NULL>;<NULL>;
+94;103;108;<NULL>;<NULL>;<NULL>;
+201;403;201;1.12;20;0;
+202;402;201;1.1;190;10;
+203;401;201;1.25;100;0;
+229;401;225;1.25;100;0;
+230;402;225;1.1;100;0;
+161;202;161;15.45;10;0;
+162;402;161;1.1;500;10;
+233;201;227;80.66;25;0;
+231;402;226;1.1;110;0;
+232;401;226;1.25;110;0;
+241;403;241;1.12;100;0;
+242;402;241;1.1;100;0;
+243;401;241;1.25;100;0;
+244;402;242;1.1;100;0;
+245;403;242;1.12;100;0;
+246;401;242;1.25;100;0;
+247;401;243;1.25;100;0;
+248;402;243;1.1;100;0;
+249;403;243;1.12;100;0;
+
+
+MUNICIPIOS
+
+305;4;Alsodux;
+306;4;Antas;
+307;4;Arboleas;
+308;4;Armuña de Almanzora;
+309;4;Bacares;
+310;4;Bayárcal;
+311;4;Bayarque;
+312;4;Bédar;
+313;4;Beires;
+314;4;Benahadux;
+315;4;Benitagla;
+316;4;Benizalón;
+317;4;Bentarique;
+318;4;Berja;
+319;4;Canjáyar;
+320;4;Cantoria;
+321;4;Carboneras;
+322;4;Castro de Filabres;
+323;4;Chercos;
+324;4;Chirivel;
+325;4;Cóbdar;
+326;4;Cuevas del Almanzora;
+327;4;Dalías;
+328;4;Ejido (El);
+329;4;Enix;
+330;4;Felix;
+331;4;Fines;
+332;4;Fiñana;
+333;4;Fondón;
+334;4;Gádor;
+335;4;Gallardos (Los);
+336;4;Garrucha;
+337;4;Gérgal;
+338;4;Huécija;
+339;4;Huércal de Almería;
+340;4;Huércal-Overa;
+341;4;Illar;
+342;4;Instinción;
+343;4;Laroya;
+344;4;Láujar de Andarax;
+345;4;Líjar;
+346;4;Lubrín;
+347;4;Lucainena de las Torres;
+348;4;Lúcar;
+349;4;Macael;
+350;4;María;
+351;4;Mojácar;
+352;4;Mojonera  (La);
+353;4;Nacimiento;
+354;4;Níjar;
+355;4;Ohanes;
+356;4;Olula de Castro;
+357;4;Olula del Río;
+358;4;Oria;
+359;4;Padules;
+360;4;Partaloa;
+361;4;Paterna del Río;
+362;4;Pechina;
+363;4;Pulpí;
+364;4;Purchena;
+365;4;Rágol;
+366;4;Rioja;
+367;4;Roquetas de Mar;
+368;4;Santa Cruz de Marchena;
+369;4;Santa Fe de Mondújar;
+370;4;Senés;
+371;4;Serón;
+372;4;Sierro;
+373;4;Somontín;
+374;4;Sorbas;
+375;4;Suflí;
+376;4;Tabernas;
+377;4;Taberno;
+378;4;Tahal;
+379;4;Terque;
+380;4;Tíjola;
+381;4;Tres Villas (Las);
+382;4;Turre;
+383;4;Turrillas;
+384;4;Uleila del Campo;
+385;4;Urrácal;
+386;4;Velefique;
+387;4;Vélez-Blanco;
+388;4;Vélez-Rubio;
+389;4;Vera;
+390;4;Viator;
+391;4;Vícar;
+392;4;Zurgena;
+393;5;Adanero;
+394;5;Adrada  (La);
+395;5;Albornos;
+396;5;Aldeanueva de Santa Cruz;
+397;5;Aldeaseca;
+398;5;Aldehuela  (La);
+399;5;Amavida;
+400;5;Arenal (El);
+401;5;Arenas de San Pedro;
+402;5;Arevalillo;
+403;5;Arévalo;
+404;5;Aveinte;
+
+
+PAGO_CLIENTES
+
+
+PAIS
+
+238;262;DJ;DJI;Yibuti;
+239;894;ZM;ZMB;Zambia;
+240;716;ZW;ZWE;Zimbabue;
+1;4;AF;AFG;Afganistán;
+2;248;AX;ALA;Islas Gland;
+3;8;AL;ALB;Albania;
+4;276;DE;DEU;Alemania;
+5;20;AD;AND;Andorra;
+6;24;AO;AGO;Angola;
+7;660;AI;AIA;Anguilla;
+8;10;AQ;ATA;Antártida;
+9;28;AG;ATG;Antigua y Barbuda;
+10;530;AN;ANT;Antillas Holandesas;
+11;682;SA;SAU;Arabia Saudí;
+12;12;DZ;DZA;Argelia;
+13;32;AR;ARG;Argentina;
+14;51;AM;ARM;Armenia;
+15;533;AW;ABW;Aruba;
+16;36;AU;AUS;Australia;
+17;40;AT;AUT;Austria;
+18;31;AZ;AZE;Azerbaiyán;
+19;44;BS;BHS;Bahamas;
+20;48;BH;BHR;Bahréin;
+21;50;BD;BGD;Bangladesh;
+22;52;BB;BRB;Barbados;
+23;112;BY;BLR;Bielorrusia;
+24;56;BE;BEL;Bélgica;
+25;84;BZ;BLZ;Belice;
+26;204;BJ;BEN;Benin;
+27;60;BM;BMU;Bermudas;
+28;64;BT;BTN;Bhután;
+29;68;BO;BOL;Bolivia;
+30;70;BA;BIH;Bosnia y Herzegovina;
+31;72;BW;BWA;Botsuana;
+32;74;BV;BVT;Isla Bouvet;
+33;76;BR;BRA;Brasil;
+34;96;BN;BRN;Brunéi;
+35;100;BG;BGR;Bulgaria;
+36;854;BF;BFA;Burkina Faso;
+37;108;BI;BDI;Burundi;
+38;132;CV;CPV;Cabo Verde;
+39;136;KY;CYM;Islas Caimán;
+40;116;KH;KHM;Camboya;
+41;120;CM;CMR;Camerún;
+42;124;CA;CAN;Canadá;
+43;140;CF;CAF;República Centroafricana;
+44;148;TD;TCD;Chad;
+45;203;CZ;CZE;República Checa;
+46;152;CL;CHL;Chile;
+47;156;CN;CHN;China;
+48;196;CY;CYP;Chipre;
+49;162;CX;CXR;Isla de Navidad;
+50;336;VA;VAT;Ciudad del Vaticano;
+51;166;CC;CCK;Islas Cocos;
+52;170;CO;COL;Colombia;
+53;174;KM;COM;Comoras;
+54;180;CD;COD;República Democrática del Congo;
+55;178;CG;COG;Congo;
+56;184;CK;COK;Islas Cook;
+57;408;KP;PRK;Corea del Norte;
+58;410;KR;KOR;Corea del Sur;
+59;384;CI;CIV;Costa de Marfil;
+60;188;CR;CRI;Costa Rica;
+61;191;HR;HRV;Croacia;
+62;192;CU;CUB;Cuba;
+63;208;DK;DNK;Dinamarca;
+64;212;DM;DMA;Dominica;
+65;214;DO;DOM;República Dominicana;
+66;218;EC;ECU;Ecuador;
+67;818;EG;EGY;Egipto;
+68;222;SV;SLV;El Salvador;
+69;784;AE;ARE;Emiratos Árabes Unidos;
+70;232;ER;ERI;Eritrea;
+71;703;SK;SVK;Eslovaquia;
+72;705;SI;SVN;Eslovenia;
+73;724;ES;ESP;España;
+74;581;UM;UMI;Islas ultramarinas de Estados Unidos;
+75;840;US;USA;Estados Unidos;
+76;233;EE;EST;Estonia;
+77;231;ET;ETH;Etiopía;
+78;234;FO;FRO;Islas Feroe;
+79;608;PH;PHL;Filipinas;
+80;246;FI;FIN;Finlandia;
+81;242;FJ;FJI;Fiyi;
+82;250;FR;FRA;Francia;
+83;266;GA;GAB;Gabón;
+84;270;GM;GMB;Gambia;
+85;268;GE;GEO;Georgia;
+86;239;GS;SGS;Islas Georgias del Sur y Sandwich del Sur;
+87;288;GH;GHA;Ghana;
+88;292;GI;GIB;Gibraltar;
+89;308;GD;GRD;Granada;
+90;300;GR;GRC;Grecia;
+91;304;GL;GRL;Groenlandia;
+92;312;GP;GLP;Guadalupe;
+93;316;GU;GUM;Guam;
+94;320;GT;GTM;Guatemala;
+95;254;GF;GUF;Guayana Francesa;
+96;324;GN;GIN;Guinea;
+97;226;GQ;GNQ;Guinea Ecuatorial;
+
+
+
+PEDIDOS
+
+181;2013-11-25;0;0;0;0;122.5;21;25.73;148.23;21;
+182;2013-11-25;0;0;0;0;2016.27;21;423.42;2439.69;21;
+2;2013-11-11;13;13;13;13;<NULL>;2;12;13;21;
+160;2013-11-20;0;0;0;0;235;21;49.35;284.35;21;
+108;2013-11-11;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;<NULL>;21;
+201;2013-11-26;0;0;0;0;335.5;21;70.46;405.96;22;
+225;2013-11-28;0;0;0;0;235;21;49.35;284.35;23;
+161;2013-11-21;0;0;0;0;649.5;21;136.39;785.9;22;
+227;2013-11-28;0;0;0;0;2016.5;21;423.47;2439.97;21;
+226;2013-11-28;0;0;0;0;258.5;21;54.29;312.78;23;
+241;2014-03-17;0;0;0;0;347;21;72.87;419.87;21;
+242;2014-03-17;0;0;0;0;347;21;72.87;419.87;23;
+243;2014-03-17;0;0;0;0;347;21;72.87;419.87;22;
+
+
+PERSONAS_CONTACTO
+
+21;21;David;2;2;Excellent;Cuando me de la gana;alguine@jmail.com;
+47;25;prueba jav113b;2222222;20;no se;<NULL>;noseotravez@com;
+23;24;otra persona;259;245;casi encargado;<NULL>;<NULL>;
+26;25;mas contactos;999;999;no se cual es;<NULL>;<NULL>;
+42;21;prueba j113b;9999999;10;no se;<NULL>;nose@com;
+
+
+PROVEEDORES
+
+
+PROVEEDORES_ARTICULOS
+
+PROVINCIAS
+
+99;curso telefonica;
+1;Álava;
+2;Albacete;
+3;Alicante;
+4;Almería;
+5;Ávila;
+6;Badajoz;
+7;Baleares (Illes);
+8;Barcelona;
+9;Burgos;
+10;Cáceres;
+11;Cádiz;
+12;Castellón;
+13;Ciudad Real;
+14;Córdoba;
+15;A Coruña;
+16;Cuenca;
+17;Girona;
+18;Granada;
+19;Guadalajara;
+20;Guipúzcoa;
+21;Huelva;
+22;Huesca;
+23;Jaén;
+24;León;
+25;Lleida;
+26;La Rioja;
+27;Lugo;
+28;Madrid;
+29;Málaga;
+30;Murcia;
+31;Navarra;
+32;Ourense;
+33;Asturias;
+34;Palencia;
+35;Las Palmas;
+36;Pontevedra;
+37;Salamanca;
+38;Santa Cruz de Tenerife;
+39;Cantabria;
+40;Segovia;
+41;Sevilla;
+42;Soria;
+43;Tarragona;
+44;Teruel;
+45;Toledo;
+46;Valencia;
+47;Valladolid;
+48;Vizcaya;
+49;Zamora;
+50;Zaragoza;
+51;Ceuta;
+52;Melilla;
+
+
+REGISTRO_USUARIOS
+
+61;Juan;2013-11-21;2013-11-21;22:01:09 22:03:03 Juan:0:0:1:54;2;0;
+62;Juan;2013-11-21;2013-11-21;22:04:08 22:05:47 Juan:0:0:1:39;3;0;
+81;Juan;2013-11-23;2013-11-23;14:34:03 14:36:51 Juan:0:0:2:48;0;0;
+
+ROLES
+
+2;Jefe de ventas;
+10;Vendedor empresas;
+1;ROLE_ADMIN;
+20;Vendedor clientes;
+50;Cliente;
+
+
+ROLES_TAREAS
+
+1;1;
+1;10;
+1;11;
+1;12;
+1;13;
+1;20;
+1;25;
+1;30;
+1;35;
+2;10;
+2;11;
+2;12;
+2;13;
+10;10;
+10;11;
+10;12;
+10;13;
+20;10;
+20;11;
+50;10;
+50;11;
+50;12;
+
+TAREAS
+
+10;Registro;clientes.jsp;
+13;Seguimiento;seguimiento.jsp;
+1;Administracion;administracion.jsp;
+11;Historico;historico_clientes.jsp;
+12;Realizacion;pedido.jsp;
+20;Subida ficheros;subida.jsp;
+25;Listado de conexiones;listado_conexiones.jsp;
+30;Vencimientos;vencimiento.jsp;
+35;Listado de realizacion;listado_realizacion.jsp;
+
+
+TAREAS_REALIZADAS
+
+TAREAS_USUARIOS
+
+41;alta_usuario;ac;
+42;baja_usuario;ac;
+43;modificacion_usuario;ac;
+44;consulta_usuario;ac;
+45;login;ac;
+46;finalizacion;ac;
+47;alta_pedido;ac;
+48;modificacion_pedido;ac;
+49;subida_ficheros;ac;
+50;alta_roles;ac;
+51;baja_roles;ac;
+52;seguimiento;ac;
+53;administracion;ac;
+54;historico_clientes;ac;
+55;subida;ac;
+56;listado_conexiones;ac;
+57;vencimiento;ac;
+58;listado_realizacion;ac;
+59;pedido;ac;
+60;alta_usuario;ac;
+61;baja_usuario;ac;
+62;modificacion_usuario;ac;
+63;consulta_usuario;ac;
+64;login;ac;
+65;finalizacion;ac;
+66;alta_pedido;ac;
+67;modificacion_pedido;ac;
+68;subida_ficheros;ac;
+69;alta_roles;ac;
+70;baja_roles;ac;
+71;clientes;ac;
+72;seguimiento;ac;
+73;administracion;ac;
+74;historico_clientes;ac;
+75;subida;ac;
+76;listado_conexiones;ac;
+77;vencimiento;ac;
+78;listado_realizacion;ac;
+79;pedido;ac;
+
+
+USUARIOS
+
+prueba2;<NULL>;20;2014-03-17;<NULL>;carpeta_prueba2;es;
+prueba telefonica;admin;20;2014-03-17;<NULL>;mia;en;
+asdfasdf;<NULL>;2;2014-03-17;<NULL>;<NULL>;es;
+Juan;admin;1;<NULL>;<NULL>;mi carpeta;es;
+vendor1;vendor1;10;<NULL>;<NULL>;<NULL>;<NULL>;
+vendor2;vendor2;10;<NULL>;<NULL>;<NULL>;<NULL>;
+client2;client2;50;<NULL>;<NULL>;<NULL>;<NULL>;
+vendi1;vendi1;20;<NULL>;<NULL>;<NULL>;<NULL>;
+vendi2;vendi2;20;<NULL>;<NULL>;<NULL>;<NULL>;
+client1;client1;50;<NULL>;<NULL>;<NULL>;<NULL>;
+client3;client3;50;<NULL>;<NULL>;<NULL>;<NULL>;
+
+
+VENCIMIENTOS
+
+121;2013-11-25;148.23;181;<NULL>;<NULL>;p;21;
+122;2013-11-25;2439.69;182;<NULL>;<NULL>;p;21;
+73;2013-11-11;1;2;<NULL>;Bankia;S;21;
+74;2013-11-11;2;2;<NULL>;Bankia;S;21;
+79;<NULL>;1500;108;<NULL>;<NULL>;<NULL>;21;
+80;<NULL>;1500;108;<NULL>;<NULL>;<NULL>;21;
+81;2013-11-20;284.35;160;<NULL>;<NULL>;<NULL>;21;
+141;2013-11-26;405.96;201;<NULL>;<NULL>;p;22;
+161;2013-11-28;142.18;<NULL>;<NULL>;<NULL>;<NULL>;23;
+162;2013-12-28;142.18;<NULL>;<NULL>;<NULL>;<NULL>;23;
+101;2013-12-21;261.96;161;<NULL>;<NULL>;<NULL>;22;
+102;2014-01-20;261.96;161;<NULL>;<NULL>;<NULL>;22;
+103;2014-02-19;261.96;161;<NULL>;<NULL>;<NULL>;22;
+165;2013-11-28;2439.97;227;<NULL>;<NULL>;p;21;
+163;2013-11-28;156.39;<NULL>;<NULL>;<NULL>;<NULL>;23;
+164;2013-12-28;156.39;<NULL>;<NULL>;<NULL>;<NULL>;23;
+181;2014-03-17;419.87;241;<NULL>;<NULL>;<NULL>;21;
+182;2014-04-16;104.97;242;<NULL>;<NULL>;<NULL>;23;
+183;2014-05-16;104.97;242;<NULL>;<NULL>;<NULL>;23;
+184;2014-06-15;104.97;242;<NULL>;<NULL>;<NULL>;23;
+185;2014-07-15;104.97;242;<NULL>;<NULL>;<NULL>;23;
+186;2014-04-16;139.96;243;<NULL>;<NULL>;<NULL>;22;
+187;2014-05-16;139.96;243;<NULL>;<NULL>;<NULL>;22;
+188;2014-06-15;139.96;243;<NULL>;<NULL>;<NULL>;22;
+

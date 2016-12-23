@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+	<h:form id="formu_administracion">
+		<ace:tabSet id="panel_administracion">
+			<ace:tabPane id="admin_usuarios"
+				label="#{idioma['formu.administracion.label.usuario']}">
+				<h:form id="formu_usuario">
+					<ace:panel id="acepan_usuario" header="Ficha de Usuario"
+						closable="true">
+						<h:panelGrid id="panel_usuario" columns="3">
+							<h:outputText id="col_nombre"
+								value="#{idioma['formu.administracion.titulo']}" />
+							<h:inputText id="nombre" value="#{usuario_bean.nombre_usuario}">
+								<f:validateLength maximum="20" />
+							</h:inputText>
+							<h:message for="nombre" id="error_nombre" />
+							<h:outputText id="col_clave"
+								value="#{idioma['formu.administracion.claveusuario']}" />
+							<h:inputSecret id="clave" value="#{usuario_bean.clave}"
+								redisplay="true">
+								<f:validateLength maximum="10" />
+							</h:inputSecret>
+							<h:message for="clave" id="error_clave" />
+							<h:outputText id="col_fechaalta"
+								value="#{idioma['formu.administracion.fechaalta']}" />
+							<h:inputText id="fecha_alta" value="#{usuario_bean.fecha_alta}">
+								<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+							</h:inputText>
+							<h:message for="fecha_alta" id="error_fechaalta" />
+							<h:outputText id="col_fechabaja"
+								value="#{idioma['formu.administracion.fechabaja']}" />
+							<h:inputText id="fecha_baja" value="#{usuario_bean.fecha_baja}">
+								<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+							</h:inputText>
+							<h:message for="fecha_baja" id="error_fechabaja" />
+							<h:outputText id="col_carpeta"
+								value="#{idioma['formu.administracion.carpeta']}" />
+							<h:inputText id="carpeta" value="#{usuario_bean.carpeta}" />
+							<h:message for="carpeta" id="error_carpeta" />
+							<h:outputText id="col_idioma"
+								value="#{idioma['formu.administracion.idioma']}" />
+							<h:selectOneRadio id="idioma" value="#{usuario_bean.idioma }">
+								<f:selectItem id="idi_es"
+									itemLabel="#{idioma['formu.administracion.idiomaes']}"
+									itemValue="es" />
+								<f:selectItem id="idi_en"
+									itemLabel="#{idioma['formu.administracion.idiomaen']}"
+									itemValue="en" />
+								<f:selectItem id="idi_fr"
+									itemLabel="#{idioma['formu.administracion.idiomafr']}"
+									itemValue="fr" />
+							</h:selectOneRadio>
+							<h:message id="error_idioma" for="idioma" />
+							<h:outputText id="col_rol"
+								value="#{idioma['formu.administracion.rol']}" />
+							<h:selectOneMenu id="rol" value="#{usuario_bean.codigo_rol}">
+								<f:selectItems id="opciones_rol"
+									value="#{usuario_bean.lista_roles}" />
+							</h:selectOneMenu>
+							<h:message id="error_rol" for="rol" />
+						</h:panelGrid>
+						<h:panelGrid id="panel_botones" columns="6">
+							<h:commandButton id="bot_alta"
+								value="#{idioma['formu.administracion.botonalta']}"
+								disabled="#{usuario_bean.activar_alta}"
+								actionListener="#{usuario_bean.tratar_Accion}" />
+							<h:commandButton id="bot_baja"
+								value="#{idioma['formu.administracion.botonbaja']}"
+								disabled="#{usuario_bean.activar_BM}"
+								actionListener="#{usuario_bean.tratar_Accion}" />
+							<h:commandButton id="bot_consultas"
+								value="#{idioma['formu.administracion.botonconsulta']}"
+								actionListener="#{usuario_bean.tratar_Accion}" />
+							<h:commandButton id="bot_modificaciones"
+								value="#{idioma['formu.administracion.botonmodificacion']}"
+								actionListener="#{usuario_bean.tratar_Accion}"
+								disabled="#{usuario_bean.activar_BM}" />
+							<h:commandButton id="bot_reiniciar"
+								value="#{idioma['formu.administracion.botonlimpiar']}"
+								actionListener="#{usuario_bean.tratar_Accion}" />
+							<h:commandButton id="bot_salir"
+								value="#{idioma['formu.administracion.botonsalir']}"
+								actionListener="#{usuario_bean.tratar_Accion}" />
+						</h:panelGrid>
+					</ace:panel>
+				</h:form>
+			</ace:tabPane>
+			<ace:tabPane id="admin_roles"
+				label="#{idioma['formu.administracion.label.roles']}">
+
+			</ace:tabPane>
+		</ace:tabSet>
+	</h:form>
+</ui:composition>

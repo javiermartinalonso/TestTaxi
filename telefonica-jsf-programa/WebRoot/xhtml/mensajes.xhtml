@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+	<h:form id="formu_mensajes">
+		<ace:dialog id="ventana_mensajes" header="Ventana mensajes"
+			closable="true" modal="true" draggable="true"
+			height="#{mensajes_bean.alto}" width="#{mensajes_bean.ancho}"
+			position="center" visible="#{mensajes_bean.visible}">
+			<h:panelGrid id="panel_mensaje" columns="2">
+				<h:graphicImage id="img" value="#{mensajes_bean.icono_mensaje}"
+					styleClass="mensaje_icono" />
+				<h:outputText id="texto_mensaje" value="#{mensajes_bean.mensaje}"
+					styleClass="mensaje_texto" />
+				<h:panelGrid id="boton_cerrar" columns="1">
+					<h:commandButton id="boton_mensaje" value="Cerrar"
+						actionListener="#{mensajes_bean.cerrar_Mensaje}" />
+				</h:panelGrid>
+			</h:panelGrid>
+		</ace:dialog>
+	</h:form>
+</ui:composition>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+	version="2.1">
+
+	<!-- ******* ZONA DE MANAGEDBEAN ********** -->
+	<!-- CONTROL DE CREDENCIALES -->
+	<managed-bean>
+		<description>GESTION DEL PROCESO DE AUTENTICACION DEL USUARIO</description>
+		<managed-bean-name>login_bean</managed-bean-name>
+		<managed-bean-class>com.atrium.managedbean.Login_Bean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<managed-property>
+			<property-name>gestion_usuario</property-name>
+			<value>#{gestion_usuario}</value>
+		</managed-property>
+	</managed-bean>
+	<!-- CONTROL DE MENU -->
+	<managed-bean>
+		<description>CREACION DEL MENU PERSONALIZADO DE CADA USUARIO</description>
+		<managed-bean-name>menu_bean</managed-bean-name>
+		<managed-bean-class>com.atrium.managedbean.Menu_DinamicoBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<!-- PROCESOS DE LA VISTA DE VENCIMIENTOS -->
+	<managed-bean>
+		<managed-bean-name>vencimientos_bean</managed-bean-name>
+		<managed-bean-class>com.atrium.managedbean.Vencimientos_Bean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<managed-property>
+			<property-name>gestion_pedido</property-name>
+			<value>#{gestion_pedido}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- CONTROL DEL PROCESO CRUD DE USUARIOS -->
+	<managed-bean>
+		<description>Gestion de los procesos de bd de usuarios</description>
+		<managed-bean-name>usuario_bean</managed-bean-name>
+		<managed-bean-class>com.atrium.managedbean.Usuarios_Bean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<managed-property>
+			<property-name>gestion_Usuario</property-name>
+			<value>#{gestion_usuario}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- LISTA DE MANAGEDBEAN GESTIONADOS DIRECTAMENTE POR SPRING -->
+	<!-- IDIOMA_BEAN MENSAJES_BEAN -->
+	<!-- ******* FIN ZONA DE MANAGEDBEAN ********** -->
+
+
+	<!-- *** MODIFICACION DE PARAMETROS DE FUNCIONAMIENTO DE JSF *** -->
+	<application>
+		<!-- CAMBIAMOS EL CONSTRUCTOR DE MANAGEDBEANS POR APPLICATIONCONTEXT DE 
+			SPRING PARA PODER INYECTAR PROPIEDADES DESDE SPRING -->
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+	</application>
+
+</faces-config>
