@@ -7,7 +7,7 @@
 
 	<!-- PETICION INICIAL DE LA APLICACION -->
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 
 	<!-- ******** ZONA DE CONTROLADORES (SERVLETS) ******* -->
@@ -46,7 +46,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>filtro_idioma</filter-name>
-		<url-pattern>/index.jsp</url-pattern>
+		<url-pattern>/index.html</url-pattern>
 	</filter-mapping>
   
 	<filter>
