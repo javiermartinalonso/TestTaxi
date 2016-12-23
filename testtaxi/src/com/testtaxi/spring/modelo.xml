@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-autowire="byName" default-lazy-init="true"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+		
+	<!-- ****** ZONA DE BASE DE DATOS ***** -->
+	<!-- CONEXION A LA BASE DE DATOS -->		
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:com/testtaxi/hibernate/hibernate.cfg.xml"></property>
+	</bean>
+
+
+	<!-- ********** ZONA DE DAOS ********** -->
+	<bean id="usuario_dao" class="com.testtaxi.hibernate.dao.UsuariosDAO" scope="prototype" />
+	<bean id="pregunta_dao" class="com.testtaxi.hibernate.dao.ext.PreguntasDAOEXT" scope="prototype" />	
+	<bean id="test_dao" class="com.testtaxi.hibernate.dao.ext.TestDAOEXT" scope="prototype" />
+
+	<!-- ******** FIN ZONA DE DAOS ******** -->
+
+
+	<!-- ******** ZONA DE FACHADAS ******** -->
+	<bean id="f_usuarios" class="com.testtaxi.hibernate.modelo.F_Usuario" scope="prototype" />
+	<bean id="f_preguntas" class="com.testtaxi.hibernate.modelo.F_Preguntas" scope="prototype" />
+	<bean id="f_tests" class="com.testtaxi.hibernate.modelo.F_Test" scope="prototype" />
+	<!-- ****** FIN ZONA DE FACHADAS ****** -->
+
+
+	<!-- ******* ZONA DE TRANSACCIONES ******** -->
+	<!-- GESTOR DE TRANSACCIONES PARA HIBERNATE -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager" />
+
+	<aop:config>
+		<aop:pointcut expression="execution (* com.testtaxi.hibernate.modelo.F_Usuario.*(..))" id="usuario_tran" />
+		<aop:advisor advice-ref="metodos_usuario" pointcut-ref="usuario_tran" />
+	</aop:config>
+	<tx:advice id="metodos_usuario" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*Usuario" propagation="REQUIRED" />
+			<tx:method name="consulta*" propagation="REQUIRED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>	
+	
+	<aop:config>
+		<aop:pointcut expression="execution (* com.testtaxi.hibernate.modelo.F_Test.*(..))" id="test_tran" />
+		<aop:advisor advice-ref="metodos_test" pointcut-ref="test_tran" />
+	</aop:config>
+	<tx:advice id="metodos_test" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*Test" propagation="REQUIRED" />
+			<tx:method name="consulta*" propagation="REQUIRED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>	
+	
+	<aop:config>
+		<aop:pointcut expression="execution (* com.testtaxi.hibernate.modelo.F_Preguntas.*(..))" id="test_tran" />
+		<aop:advisor advice-ref="metodos_test" pointcut-ref="test_tran" />
+	</aop:config>
+	<tx:advice id="metodos_test" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*Pregunta" propagation="REQUIRED" />
+			<tx:method name="consulta*" propagation="REQUIRED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- ***** FIN ZONA DE TRANSACCIONES ****** -->
+</beans>

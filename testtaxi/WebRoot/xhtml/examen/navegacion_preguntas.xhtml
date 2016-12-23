@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+	
+	<h:panelGrid id="panel_preguntas" columns="1" styleClass="panel_cronometro" >
+		<h:outputText id="Nvegacion_preguntas" value="Navegación Preguntas" style="text-align: left; font-weight: bold"/>
+		<h:panelGrid id="panel_navegacion" columns="4" border="0" width="100%"  cellspacing="20">
+			<h:outputText value="Actual: " style="font-size: small; font-weight: bold; margin-left: 10px; margin-right: 10px"/>		
+			<h:outputText value="Totales: " style="font-size: small; font-weight: bold;  margin-left: 10px; margin-right: 10px"/>		
+			<h:outputText value="Contestadas: " style="font-size: small; font-weight: bold;  margin-left: 10px; margin-right: 10px"/>
+			<h:outputText value="Pendientes: " style="font-size: small; font-weight: bold;  margin-left: 10px; margin-right: 10px"/>
+						
+			<h:inputText id="pregunta_actual"  styleClass="form_input" disabled="true" value="01" style=" margin-left: 10px; margin-right: 10px"/>
+			<h:inputText id="pregunta_total" styleClass="form_input" disabled="true" value="#{examen_generico.test_actual.numPreguntas}" style=" margin-left: 10px; margin-right: 10px"/>
+			<h:inputText id="pregunta_contestadas" styleClass="form_input" disabled="true" value="00" style=" margin-left: 10px; margin-right: 10px"/>
+			<h:inputText id="pregunta_pendientes" styleClass="form_input" disabled="true" value="#{examen_generico.test_actual.numPreguntas}" style=" margin-left: 10px; margin-right: 10px"/>
+		</h:panelGrid>
+	</h:panelGrid>
+	
+ </ui:composition>

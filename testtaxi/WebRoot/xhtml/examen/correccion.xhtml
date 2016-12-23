@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+   <ace:panel visible="#{examen_generico.correccion_visible}" >
+		<ui:include src="/xhtml/examen/correccion_examen_cabecera.xhtml" />
+		
+		<h:panelGrid columns="2" styleClass="panel_botones">
+			<h:commandButton id="bot_finalizar" value="Finalizar correccion" onclick="confirmation.show();" />
+			<!-- <h:commandButton id="bot_reintentar" value="Reintentar test" /> -->
+		</h:panelGrid>	
+	</ace:panel>
+	
+	<ace:confirmationDialog id="confirmDialog" widgetVar="confirmation"	modal="true" message="¿Quieres finalizar realmente la revisión de la corrección del test?"
+						header="Modal Dialog" width="300" height="200" closable="true" closeOnEscape="false">
+		<h:panelGrid width="100%" style="text-align: center;" columns="2" cellspacing="30">
+			<h:commandButton id="si" value="Si" onclick="confirmation.hide();void(cerrar_pagina());" />
+			<h:commandButton id="no" value="No" onclick="confirmation.hide()" />
+		</h:panelGrid>
+	</ace:confirmationDialog>
+</ui:composition>

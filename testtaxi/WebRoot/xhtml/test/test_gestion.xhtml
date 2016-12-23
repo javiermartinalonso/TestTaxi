@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+>
+
+	
+
+	<h:form id="formu_test"> 
+	
+		<ace:dataTable id="tabla_tests" value="#{test_bean.lista_tests}" var="test" rows="10" 
+		   paginator="true" paginatorPosition="bottom" paginatorAlwaysVisible="true"
+		   selectionMode="single" rowSelectListener="#{test_bean.tratar_Seleccion}" rowUnselectListener="#{test_bean.tratar_Deseleccion}" styleClass="tabla_usuarios">
+			<ace:columnGroup id="cabecera_tabla" type="header">
+				<ace:row>
+					<ace:column id="texto_cabecera" colspan="11" headerText="Lista de tests" />
+				</ace:row>
+				<ace:row>     
+				<!--  
+					<ace:column id="colum_id_test" headerText="Id_test" sortBy="#{test.id}" filterBy="#{test.id}" filterMatchMode="contains" />
+				--> 
+					<ace:column id="colum_tipo" headerText="Tipo" sortBy="#{test.tipo}" filterBy="#{test.tipo}" filterMatchMode="contains"/>
+					<ace:column id="colum_descripcion" headerText="Descripcion" sortBy="#{test.descripcion}" filterBy="#{test.descripcion}" filterMatchMode="contains" />
+					<ace:column id="colum_duracion" headerText="Duracion" sortBy="#{test.duracion}" filterBy="#{test.duracion}" filterMatchMode="contains" />
+					<ace:column id="colum_dificultad" headerText="Dificultad" sortBy="#{test.dificultad}" filterBy="#{test.dificultad}" filterMatchMode="contains" />
+				<!-- -->
+					<ace:column id="colum_numPreguntas" headerText="Num Preguntas" sortBy="#{test.numPreguntas}" filterBy="#{test.numPreguntas}" filterMatchMode="contains" />
+					<ace:column id="colum_puntosAprobado" headerText="Puntos Aprobado" sortBy="#{test.puntosAprobado}" filterBy="#{test.puntosAprobado}" filterMatchMode="contains" />
+					 	
+				</ace:row>
+			</ace:columnGroup>
+	<!--
+			<ace:column id="col_id_test">
+				<h:outputText id="codigo_test" value="#{test.id}" />
+			</ace:column>
+	-->
+			<ace:column id="col_tipo">
+				<h:outputText id="tipo" value="#{test.tipo}" />
+			</ace:column>
+			<ace:column id="col_descripcion">
+				<h:outputText id="descripcion" value="#{test.descripcion}" />
+			</ace:column>
+			<ace:column id="col_duracion">
+				<h:outputText id="duracion" value="#{test.duracion}" />
+			</ace:column>
+			<ace:column id="col_dificultad">
+				<h:outputText id="dificultad" value="#{test.dificultad}" />
+			</ace:column>
+			<!--  -->		
+			<ace:column id="col_numPreguntas">
+				<h:outputText id="numPreguntas" value="#{test.numPreguntas}" />
+			</ace:column>
+			<ace:column id="col_puntosAprobado">
+				<h:outputText id="puntosAprobado" value="#{test.puntosAprobado}" />
+			</ace:column>	
+				
+		</ace:dataTable>	
+		
+		<ace:panel id="ace_panel_test" header="Ficha de test" styleClass="tabla_tests">
+			<h:panelGrid id="panel_test" columns="3">
+<!--
+				<h:outputText id="label_id_test" value="Id test: " />
+				<h:inputText id="id_test" value="#{test_bean.test.id}"  > 
+					 <f:validateLength maximum="20" minimum="4"/> 
+				</h:inputText>
+				
+				<h:message for="id_test" id="error_id_test" styleClass="mensaje_error" />
+-->			
+			
+				<h:outputText id="label_tipo" value="Tipo: " />
+				<ace:simpleSelectOneMenu id="test_tipo" value="#{test_bean.test.tipo}" > 
+					<f:selectItems id="opciones_tipo" value="#{test_bean.lista_tipo_test}" />
+            	</ace:simpleSelectOneMenu>
+	            <ace:message id="error_tipo" for="test_tipo" initEffect="fade" changeEffect="size"/>
+            
+    	        <h:outputText value="Descripcion:" />
+				<ace:textEntry id="test_descripcion" value="#{test_bean.test.descripcion}" 	
+					required="true" requiredIndicator="(*)"
+					requiredMessage="Es necesario indicar una descripción del test. Escriba un título que identifique el test."
+					validatorMessage="Error de validación: La descripción debe tener entre 4 y 200 caracteres.">
+					<f:validateLength maximum="200" minimum="4"/>
+				</ace:textEntry>            
+				<ace:message id="test_descripcion_msg" for="test_descripcion" initEffect="fade" changeEffect="size"/>
+
+	            <h:outputText value="Duracion Minutos(1-240):" />
+				<ace:textEntry id="test_duracion" value="#{test_bean.test.duracion}" 	
+					required="true" requiredIndicator="(*)" maxlength="3" autoTab="true"
+					requiredMessage="Es necesario indicar una duración del test en minutos."
+					validatorMessage="Error de validación: La duración debe ser un entero entre 1 y 240."
+					converterMessage="Error de conversión: La duración debe ser un entero entre 1 y 240.">
+					<f:validateLongRange minimum="1" maximum="240" />
+				</ace:textEntry>            
+				<ace:message id="test_duracion_msg" for="test_duracion" initEffect="fade" changeEffect="size"/>
+			
+	            <h:outputText value="Dificultad (Min:1/Max:5):" />
+<!--
+				<ace:textEntry id="test_dificultad" value="#{test_bean.test.dificultad}" 	
+					required="true" requiredIndicator="(*)" maxlength="1" autoTab="true"
+					requiredMessage="Es necesario indicar la dificultad del test."
+					validatorMessage="Error de validación: La dificultad debe ser un entero entre 1 y 5."
+					converterMessage="Error de conversión: La dificultad debe ser un entero entre 1 y 5.">
+					<f:validateLongRange minimum="1" maximum="5" />
+				</ace:textEntry>
+-->  
+				<ace:simpleSelectOneMenu id="test_dificultad" value="#{test_bean.test.dificultad}"  > 
+					<f:selectItem itemValue="1" itemLabel="1" />
+					<f:selectItem itemValue="2" itemLabel="2" />
+					<f:selectItem itemValue="3" itemLabel="3" />
+					<f:selectItem itemValue="4" itemLabel="4" />
+					<f:selectItem itemValue="5" itemLabel="5" />
+            	</ace:simpleSelectOneMenu>          
+				<ace:message id="test_dificultad_msg" for="test_dificultad" initEffect="fade" changeEffect="size"/>		
+			
+    	        <h:outputText value="Num Preguntas (1-200):" />
+				<ace:textEntry id="test_num_preguntas" value="#{test_bean.test.numPreguntas}" 	
+					required="true" requiredIndicator="(*)" maxlength="3" autoTab="true"
+					requiredMessage="Es necesario indicar el número de preguntas del test."
+					validatorMessage="Error de validación: El número de preguntas debe ser un entero entre 1 y 200."
+					converterMessage="Error de conversión: El número de preguntas debe ser un entero entre 1 y 200.">
+					<f:validateLongRange minimum="1" maximum="200" />
+				</ace:textEntry>            
+				<ace:message id="test_num_preguntas_msg" for="test_num_preguntas" initEffect="fade" changeEffect="size"/>		
+				
+        	    <h:outputText value="Puntos Aprobado (1-200):" />
+				<ace:textEntry id="test_puntosAprobado" value="#{test_bean.test.puntosAprobado}" 	
+					required="true" requiredIndicator="(*)" maxlength="3" autoTab="true"
+					requiredMessage="Es necesario indicar el número de puntos necesarios para aprobar el test."
+					validatorMessage="Error de validación: El número de puntos necesarios para aprobar el test debe ser un entero entre 1 y 200."
+					converterMessage="Error de conversión: El número de puntos necesarios para aprobar el test debe ser un entero entre 1 y 200.">
+					<f:validateLongRange minimum="1" maximum="200" />
+				</ace:textEntry>            
+				<ace:message id="test_puntos_aprobado_msg" for="test_puntosAprobado" initEffect="fade" changeEffect="size"/>					
+
+			</h:panelGrid>
+			<h:panelGrid id="panel_botones" columns="6">
+				<h:commandButton id="bot_alta" value="Alta" disabled="#{test_bean.activar_alta}" actionListener="#{test_bean.tratar_Accion}" />
+			<!-- 			
+				<f:ajax render="tabla_tests" event="click" listener="#{test_bean.tratar_Accion}" >
+					   <f:param value="Alta" name="evento" />
+					</f:ajax> 
+				</h:commandButton>
+				
+				confirmation.show();
+				
+			--> 
+				<h:commandButton value="Baja" disabled="#{test_bean.activar_BMIL}" onclick="confirmationDelete.show();" />
+				<!-- <h:commandButton id="bot_consultas" value="Consulta" actionListener="#{test_bean.tratar_Accion}" /> -->
+				<h:commandButton value="Modificacion" disabled="#{test_bean.activar_BMIL}" onclick="confirmationUpdate.show();" />
+									
+				<h:commandButton  id="bot_imprimir" value="Imprimir" disabled="#{test_bean.activar_BMIL}" action="#{test_generico.cargarDatos}" onclick="confirmation.show();">
+					<f:setPropertyActionListener target="#{test_generico.id}" value="#{test_bean.test.id}" />
+				</h:commandButton>
+
+					
+				<h:commandButton id="bot_reiniciar" value="Limpiar" disabled="#{test_bean.activar_BMIL}" actionListener="#{test_bean.tratar_Accion}" />
+				<h:commandButton id="bot_salir" value="Salir" actionListener="#{test_bean.tratar_Accion}" />
+			</h:panelGrid>
+			
+			
+			<ace:confirmationDialog id="confirmDialog" widgetVar="confirmation" modal="true" message="¿Desea imprimir el test seleccionado?" header="Confirmación" 
+				width="300" height="200" closable="true" closeOnEscape="false">
+
+				<h:panelGrid width="100%" style="text-align: center;" columns="2" cellspacing="30">
+					<!-- <h:commandButton id="si" value="Si" onclick="confirmation.hide();void(modalwin('/testtaxi/xhtml/test/test_imprimir.xhtml'));" /> -->
+					<h:commandButton value="Si" onclick="confirmation.hide();void(window.open('/testtaxi/xhtml/test/test_imprimir.xhtml'));" />
+					<h:commandButton value="No" onclick="confirmation.hide()" />
+				</h:panelGrid>
+			</ace:confirmationDialog>	
+			
+			<ace:confirmationDialog id="confirmDialogDelete" widgetVar="confirmationDelete" modal="true" message="se va a proceder a borrar el test. ¿Está realmente seguro de querer borrar el test seleccionado?" header="Confirmación" 
+				width="400" height="250" closable="true" closeOnEscape="false">
+
+				<h:panelGrid width="100%" style="text-align: center;" columns="2" cellspacing="30">
+					<h:commandButton id="bot_baja" value="Si" onclick="confirmationDelete.hide()" actionListener="#{test_bean.tratar_Accion}"/>
+					<h:commandButton value="No" onclick="confirmationDelete.hide()" />
+				</h:panelGrid>
+			</ace:confirmationDialog>	
+			
+			<ace:confirmationDialog id="confirmDialogUpdate" widgetVar="confirmationUpdate" modal="true" message="se va a proceder a realizar la modificación. ¿Está realmente seguro de querer modificar el test seleccionado?" header="Confirmación" 
+				width="400" height="250" closable="true" closeOnEscape="false">
+
+				<h:panelGrid width="100%" style="text-align: center;" columns="2" cellspacing="30">
+					<h:commandButton id="bot_modificaciones" value="Si" onclick="confirmationUpdate.hide()" actionListener="#{test_bean.tratar_Accion}"/>
+					<h:commandButton value="No" onclick="confirmationUpdate.hide()" />
+				</h:panelGrid>
+			</ace:confirmationDialog>	
+			<!--   -->
+		</ace:panel>
+	</h:form>
+</ui:composition>

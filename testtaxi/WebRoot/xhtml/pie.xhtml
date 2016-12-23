@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+
+	<h:form id="formu_pie">
+		<h:panelGrid id="tabla_pie" columns="3" styleClass="tabla_pie">
+			<h:outputText id="num_cuestion" value="Usted se ha autentificado como" styleClass="indicacion_pie" />
+		<!-- 	<h:outputLink value="" styleClass="link_user" ><h:outputText value="Nombre Apellido_1 Apellido_2 " /></h:outputLink>
+			<h:outputLink value="salir" action="#{menu.accion_salir}" styleClass="link_salir" target="#{menu.accion_salir}"><h:outputText value="salir" /></h:outputLink>-->
+			
+			<h:commandLink  id="link_user"  action="#{menu_bean.accion_area_personal}" styleClass="link_user" value="#{menu_bean.usuario.nombre} #{menu_bean.usuario.apellido1} #{menu_bean.usuario.apellido2}" />
+			<h:commandLink  id="link_salir"  action="#{menu_bean.accion_salir}" styleClass="link_salir" value="salir " />
+		</h:panelGrid>
+	</h:form>
+</ui:composition>

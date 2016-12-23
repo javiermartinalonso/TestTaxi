@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+	<h:form >
+		<h:panelGrid id="lista_test" columns="1">
+			<h:panelGrid  columns="1" >
+
+				<h2 class="cabecera_test">SIMULADOR EXAMEN</h2>
+				
+
+				
+				
+				<ui:include src="/xhtml/examen/cabecera_examen.xhtml" />
+
+				<h:panelGrid columns="1" styleClass="panel_botones">
+					<h:commandButton id="response" value="COMENZAR EXAMEN" onclick="confirmation.show();" action="#{examen_generico.cargarDatos}"/>
+				</h:panelGrid>
+				
+				<ace:confirmationDialog id="confirmDialog" widgetVar="confirmation" modal="true" message="¿Comenzar examen?" header="Confirmación" 
+				width="300" height="200" closable="true" closeOnEscape="false">
+
+					<h:panelGrid width="100%" style="text-align: center;" columns="2" cellspacing="30">
+						<h:commandButton id="si" value="Si" onclick="confirmation.hide();void(modalwin('/testtaxi/xhtml/examen/examen.xhtml'));" />
+						<h:commandButton id="no" value="No" onclick="confirmation.hide()" />				
+					</h:panelGrid>
+				</ace:confirmationDialog>
+			</h:panelGrid>
+		</h:panelGrid>
+	</h:form>	
+</ui:composition>

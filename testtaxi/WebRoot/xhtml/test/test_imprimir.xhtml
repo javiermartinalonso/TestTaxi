@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+
+	<f:view encoding="ISO-8859-15">
+	
+			<h:head>
+			<!-- FORMATO PARA EL COMPONENTE DATETIMEENTRY -->
+			<h:outputScript name="javascript/funciones.js" />
+			<!-- ESTILOS PARA LA POSCION DE ALGUNOS CONTENEDORES -->
+			<ice:outputStyle href="/resources/css/posiciones.css" id="estilos_pagina" />
+			<!-- REFRESCO DE TODOS LOS COMPONENTES DE CADA VISTA CON LA INFORMACION DE LA RESPUESTA AJAX -->
+			<icecore:config mandatoryResource="all" />
+			
+			<style type="text/css">
+			body {
+			width: 100%;
+			} 
+			#container{
+			width: 100%;
+			}
+			</style>
+		</h:head>
+		<h:body onload="prepareScr();">
+		<h:form id="formu_test">
+		
+
+			<ui:include src="/xhtml/printer/printer.xhtml" />
+			  
+			<ace:panel id="panel_test">
+		
+				<h2 class="cabecera_test">#{test_generico.descripcion}</h2>
+				
+				<h:panelGrid id="panel_cuestionario" columns="1" styleClass="panel_cuestionario">
+					<ui:repeat value="#{test_generico.lista_respuestas}" var="item" varStatus="estado">
+						<h:panelGrid id="panel_pregunta_test_${estado.index+1}" columns="2" columnClasses="col_1,col_2" styleClass="pregunta_test">
+							<h:outputText id="num_pregunta_#{estado.index}"	value="#{estado.index+1}" />
+							<h:outputText id="texto_pregunta_#{estado.index}" value="#{item.textoPregunta}" />
+							<h:outputText id="puntuacion_#{estado.index}" value="Puntos: #{item.puntuacion}" styleClass="pregunta_puntuacion" />
+							<h:graphicImage id="imagen_#{estado.index}" style="display:#{item.display}" value="#{item.foto}" styleClass="objeto_centrado" />
+							<h:outputText id="indicaciones_pregunta_#{estado.index}" value="#{item.indicacionesPregunta}" styleClass="pregunta_indicaciones" />
+							<h:panelGrid id="panel_seleccion_respuesta_#{estado.index}" columns="1" styleClass="pregunta_seleccion_respuesta">
+								<h:selectOneRadio id="pregunta_#{estado.index}" layout="pageDirection" styleClass="respuesta" value="#{item.idRespuestaCorrecta}" disabled="true">
+									<f:selectItem itemValue="a" itemLabel="#{item.respuesta1}" />
+									<f:selectItem itemValue="b" itemLabel="#{item.respuesta2}" />
+									<f:selectItem itemValue="c" itemLabel="#{item.respuesta3}" />
+									<f:selectItem itemValue="d" itemLabel="#{item.respuesta4}" />
+								</h:selectOneRadio>
+							</h:panelGrid>
+						</h:panelGrid>
+					</ui:repeat>
+				
+		
+					<ace:panel id="panel_respuestas">
+			
+						<h2 class="cabecera_test">Respuestas</h2>
+				
+						<h:panelGrid columns="10" styleClass="tabla_pie">
+							<ui:repeat value="#{test_generico.lista_respuestas_1_5}" var="item" varStatus="estado">
+								<h:panelGrid id="panel_pregunta_test_${estado.index+1}" columns="1" styleClass="pregunta_test" >
+									<h:outputText id="num_pregunta_#{estado.index}"	value="#{estado.index+1}: #{item}" />					
+								</h:panelGrid>
+							</ui:repeat>		
+							<ui:repeat value="#{test_generico.lista_respuestas_6_10}" var="item" varStatus="estado">
+								<h:panelGrid id="panel_pregunta_test_${estado.index+1}" columns="1" styleClass="pregunta_test" >
+									<h:outputText id="num_pregunta_#{estado.index}"	value="#{estado.index+6}: #{item}" />					
+								</h:panelGrid>
+							</ui:repeat>
+							<ui:repeat value="#{test_generico.lista_respuestas_11_15}" var="item" varStatus="estado">
+								<h:panelGrid id="panel_pregunta_test_${estado.index+1}" columns="1" styleClass="pregunta_test" >
+									<h:outputText id="num_pregunta_#{estado.index}"	value="#{estado.index+11}: #{item}" />					
+								</h:panelGrid>
+							</ui:repeat>		
+							<ui:repeat value="#{test_generico.lista_respuestas_16_20}" var="item" varStatus="estado">
+								<h:panelGrid id="panel_pregunta_test_${estado.index+1}" columns="1" styleClass="pregunta_test" >
+									<h:outputText id="num_pregunta_#{estado.index}"	value="#{estado.index+16}: #{item}" />					
+								</h:panelGrid>
+							</ui:repeat>	
+							<ui:repeat value="#{test_generico.lista_respuestas_21_25}" var="item" varStatus="estado">
+								<h:panelGrid id="panel_pregunta_test_${estado.index+1}" columns="1" styleClass="pregunta_test" >
+									<h:outputText id="num_pregunta_#{estado.index}"	value="#{estado.index+21}: #{item}" />					
+								</h:panelGrid>
+							</ui:repeat>		
+							<ui:repeat value="#{test_generico.lista_respuestas_26_30}" var="item" varStatus="estado">
+								<h:panelGrid id="panel_pregunta_test_${estado.index+1}" columns="1" styleClass="pregunta_test" >
+									<h:outputText id="num_pregunta_#{estado.index}"	value="#{estado.index+26}: #{item}" />					
+								</h:panelGrid>
+							</ui:repeat>					
+							<ui:repeat value="#{test_generico.lista_respuestas_31_35}" var="item" varStatus="estado">
+								<h:panelGrid id="panel_pregunta_test_${estado.index+1}" columns="1" styleClass="pregunta_test" >
+									<h:outputText id="num_pregunta_#{estado.index}"	value="#{estado.index+31}: #{item}" />					
+								</h:panelGrid>
+							</ui:repeat>		
+							<ui:repeat value="#{test_generico.lista_respuestas_36_40}" var="item" varStatus="estado">
+								<h:panelGrid id="panel_pregunta_test_${estado.index+1}" columns="1" styleClass="pregunta_test" >
+									<h:outputText id="num_pregunta_#{estado.index}"	value="#{estado.index+36}: #{item}" />					
+								</h:panelGrid>
+							</ui:repeat>					
+							<ui:repeat value="#{test_generico.lista_respuestas_41_45}" var="item" varStatus="estado">
+								<h:panelGrid id="panel_pregunta_test_${estado.index+1}" columns="1" styleClass="pregunta_test" >
+									<h:outputText id="num_pregunta_#{estado.index}"	value="#{estado.index+41}: #{item}" />					
+								</h:panelGrid>
+							</ui:repeat>		
+							<ui:repeat value="#{test_generico.lista_respuestas_46_50}" var="item" varStatus="estado">
+								<h:panelGrid id="panel_pregunta_test_${estado.index+1}" columns="1" styleClass="pregunta_test" >
+									<h:outputText id="num_pregunta_#{estado.index}"	value="#{estado.index+46}: #{item}" />					
+								</h:panelGrid>
+							</ui:repeat>				
+							
+						</h:panelGrid>	
+					</ace:panel>
+					
+				</h:panelGrid>
+			</ace:panel>
+			
+				  
+			<ui:include src="/xhtml/printer/printer.xhtml" />
+
+		</h:form>
+		</h:body>
+	</f:view>
+</html>

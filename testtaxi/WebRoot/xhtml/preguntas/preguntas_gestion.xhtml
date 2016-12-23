@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+	<h:form id="formu_pregunta"> 
+	
+		<ace:dataTable id="tabla_preguntas" value="#{preguntas_bean.lista_preguntas}" var="pregunta" rows="10" 
+		   paginator="true" paginatorPosition="bottom" paginatorAlwaysVisible="true"
+		   selectionMode="single" rowSelectListener="#{preguntas_bean.tratar_Seleccion}" rowUnselectListener="#{preguntas_bean.tratar_Deseleccion}" styleClass="tabla_usuarios">
+			<ace:columnGroup id="cabecera_tabla" type="header">
+				<ace:row>
+					<ace:column id="texto_cabecera" colspan="12" headerText="Lista de preguntas" />
+				</ace:row>
+				<ace:row>     
+				<!--  
+					<ace:column id="colum_id_pregunta" headerText="Id_pregunta" sortBy="#{pregunta.id}" filterBy="#{pregunta.id}" filterMatchMode="contains" />
+				--> 
+					
+					
+					<ace:column id="colum_pregunta" headerText="Pregunta" sortBy="#{pregunta.textoPregunta}" filterBy="#{pregunta.textoPregunta}" filterMatchMode="contains"/>
+<!--  
+					<ace:column id="colum_puntuacion" headerText="Puntuacion" sortBy="#{pregunta.puntuacion}" filterBy="#{pregunta.puntuacion}" filterMatchMode="contains"/>
+					<ace:column id="colum_indicaciones" headerText="Indicaciones" sortBy="#{pregunta.indicacionesPregunta}" filterBy="#{pregunta.indicacionesPregunta}" filterMatchMode="contains"/>
+					<ace:column id="colum_foto" headerText="Foto" sortBy="#{pregunta.foto}" filterBy="#{pregunta.foto}" filterMatchMode="contains"/>
+					<ace:column id="colum_dificultad" headerText="Dificultad" sortBy="#{pregunta.dificultad}" filterBy="#{pregunta.dificultad}" filterMatchMode="contains" />
+-->
+					<ace:column id="colum_respuesta_correcta" headerText="Respuesta Correcta" sortBy="#{pregunta.idRespuestaCorrecta}" filterBy="#{pregunta.idRespuestaCorrecta}" filterMatchMode="contains" />
+<!--
+					<ace:column id="colum_numRespuestas" headerText="Num. Respuestas" sortBy="#{pregunta.numRespuestas}" filterBy="#{pregunta.numRespuestas}" filterMatchMode="contains" />
+-->
+					<ace:column id="colum_respuesta1" headerText="Respuesta 1º" sortBy="#{pregunta.respuesta1}" filterBy="#{pregunta.respuesta1}" filterMatchMode="contains" />
+					<ace:column id="colum_respuesta2" headerText="Respuesta 2º" sortBy="#{pregunta.respuesta2}" filterBy="#{pregunta.respuesta2}" filterMatchMode="contains" />
+					<ace:column id="colum_respuesta3" headerText="Respuesta 3º" sortBy="#{pregunta.respuesta3}" filterBy="#{pregunta.respuesta3}" filterMatchMode="contains" />
+					<ace:column id="colum_respuesta4" headerText="Respuesta 4º" sortBy="#{pregunta.respuesta4}" filterBy="#{pregunta.respuesta4}" filterMatchMode="contains" />
+<!--  
+					<ace:column id="colum_respuesta5" headerText="Respuesta 5º" sortBy="#{pregunta.respuesta5}" filterBy="#{pregunta.respuesta5}" filterMatchMode="contains" />
+					<ace:column id="colum_respuesta6" headerText="Respuesta 6º" sortBy="#{pregunta.respuesta6}" filterBy="#{pregunta.respuesta6}" filterMatchMode="contains" />
+					<ace:column id="colum_comentario" headerText="Comentario" sortBy="#{pregunta.comentario}" filterBy="#{pregunta.comentario}" filterMatchMode="contains" />
+-->
+					<ace:column id="colum_tipoPregunta" headerText="Tipo" sortBy="#{pregunta.tipoPregunta}" filterBy="#{pregunta.tipoPregunta}" filterMatchMode="contains" />	 	
+				</ace:row>
+			</ace:columnGroup>
+<!--
+			<ace:column id="col_id_pregunta">
+				<h:outputText id="codigo_pregunta" value="#{pregunta.id}" />
+			</ace:column>
+-->
+
+			<ace:column id="col_pregunta">
+				<h:outputText id="textoPregunta" value="#{pregunta.textoPregunta}" />
+			</ace:column>
+<!--
+			<ace:column id="col_puntuacion">
+				<h:outputText id="puntuacion" value="#{pregunta.puntuacion}" />
+			</ace:column>
+			
+			<ace:column id="col_indicacionesPregunta">
+				<h:outputText id="indicacionesPregunta" value="#{pregunta.indicacionesPregunta}" />
+			</ace:column>
+			
+			<ace:column id="col_foto">
+				<h:outputText id="foto" value="#{pregunta.foto}" />
+			</ace:column>		
+
+			<ace:column id="col_dificultad">
+				<h:outputText id="dificultad" value="#{pregunta.dificultad}" />
+			</ace:column>
+-->
+			<ace:column id="col_idRespuestaCorrecta">
+				<h:outputText id="idRespuestaCorrecta" value="#{pregunta.idRespuestaCorrecta}" />
+			</ace:column>	
+<!--
+			<ace:column id="col_numRespuestas">
+				<h:outputText id="numRespuestas" value="#{pregunta.numRespuestas}" />
+			</ace:column>
+-->
+			<ace:column id="col_respuesta1">
+				<h:outputText id="respuesta1" value="#{pregunta.respuesta1}" />
+			</ace:column>
+			<ace:column id="col_respuesta2">
+				<h:outputText id="respuesta2" value="#{pregunta.respuesta2}" />
+			</ace:column>
+			<ace:column id="col_respuesta3">
+				<h:outputText id="respuesta3" value="#{pregunta.respuesta3}" />
+			</ace:column>
+			<ace:column id="col_respuesta4">
+				<h:outputText id="respuesta4" value="#{pregunta.respuesta4}" />
+			</ace:column>
+<!--		
+			<ace:column id="col_respuesta5">
+				<h:outputText id="respuesta5" value="#{pregunta.respuesta5}" />
+			</ace:column>
+			<ace:column id="col_respuesta6">
+				<h:outputText id="respuesta6" value="#{pregunta.respuesta6}" />
+			</ace:column>						
+			<ace:column id="col_comentario">
+				<h:outputText id="comentario" value="#{pregunta.comentario}" />
+			</ace:column>		
+-->	
+			<ace:column id="col_tipoPregunta">
+				<h:outputText id="tipoPregunta" value="#{pregunta.tipoPregunta}" />
+			</ace:column>				
+		</ace:dataTable>	
+		
+		<ace:panel id="ace_panel_pregunta" header="Ficha de pregunta" styleClass="tabla_preguntas">
+		
+			<h:panelGrid id="panel_pregunta" columns="1" styleClass="" style="width:100%;">
+				
+				<ace:message id="texto_pregunta_msg" for="textoPregunta" initEffect="fade" changeEffect="size"/>
+				<ace:textAreaEntry id="textoPregunta" value="#{preguntas_bean.pregunta.textoPregunta}" style="width:100%;"
+					label="Texto de la pregunta (MAX 750 Caracteres)" labelPosition="inField" 
+					required="true" requiredIndicator=" (*)" indicatorPosition="labelRight" 
+					requiredMessage="Es necesario incluir un texto para la pregunta."
+					validatorMessage="Error de validación: La pregunta debe tener entre 4 y 750 caracteres." >
+					<f:validateLength maximum="750" minimum="4"/>
+				</ace:textAreaEntry>
+				           
+				<ace:message id="imagen_msg" for="imagen" initEffect="fade" changeEffect="size"/>
+				<ace:fileEntry id="file-entry" 
+                     relativePath="resources/images/test/"
+                     maxFileCount="1" 
+                     maxFileCountMessage="Sólo se puede subir un fichero de cada vez." 
+                     fileEntryListener="#{preguntas_bean.subir_fichero}" 
+                     maxFileSize="1048576" 
+                     maxFileSizeMessage="El fichero es demasiado grande el limite es de un 1MB." 
+                     maxTotalSize="1048576" 
+                     maxTotalSizeMessage="El fichero es demasiado grande el limite es de un 1MB." 
+                     useOriginalFilename="true" 
+                     useSessionSubdir="true">
+ <!-- guardar el nombre del fichero mediante ajax                      
+ 
+ <ace:ajax execute="@this" event="" listener="#{preguntas_bean.respuesta_seleccionada}"/>
+ -->
+                </ace:fileEntry>
+                <h:graphicImage id="imagen" value="#{preguntas_bean.pregunta.foto}" styleClass="objeto_centrado" />
+				
+				<h:panelGrid id="panel_respuestas" columns="2" style="width:100%;"  columnClasses="preguntas_col_1,preguntas_col_2" styleClass="" >
+<!--  	
+					<h:selectOneRadio id="respuesta_seleccionada1" layout="pageDirection" style="width:auto; valig:middle;" styleClass="" value="#{preguntas_bean.pregunta.idRespuestaCorrecta}">
+							<f:selectItem itemValue="a" />
+					</h:selectOneRadio>	
+-->				
+				<ace:checkboxButton id="checkBox1" value="#{preguntas_bean.check_1}">
+                    <ace:ajax execute="@this" event="activate" render="checkBox1 checkBox2 checkBox3 checkBox4" listener="#{preguntas_bean.respuesta_seleccionada}"/>
+                </ace:checkboxButton>
+                
+					<ace:textAreaEntry id="respuesta1" value="#{preguntas_bean.pregunta.respuesta1}" style="width:100%;"
+						label="Texto de la respuesta Nº 1 (MAX 750 Caracteres)" labelPosition="inField" 
+						required="true" requiredIndicator=" (*)" indicatorPosition="labelRight" 
+						requiredMessage="Es necesario indicar una respuesta a la pregunta. Escriba un texto para la respuesta."
+						validatorMessage="Error de validación: La respuesta debe tener entre 1 y 750 caracteres." >
+						<f:validateLength maximum="750" minimum="1"/>
+					</ace:textAreaEntry>
+<!--					
+					<h:selectOneRadio id="respuesta_seleccionada2" layout="pageDirection" style="width:auto;" styleClass="" value="#{preguntas_bean.pregunta.idRespuestaCorrecta}">
+						<f:selectItem itemValue="b" />
+					</h:selectOneRadio>	
+-->					
+				<ace:checkboxButton id="checkBox2" value="#{preguntas_bean.check_2}">
+                    <ace:ajax execute="@this" event="activate" render="checkBox1 checkBox2 checkBox3 checkBox4" listener="#{preguntas_bean.respuesta_seleccionada}"/>
+                </ace:checkboxButton>
+                	
+					<ace:textAreaEntry id="respuesta2" value="#{preguntas_bean.pregunta.respuesta2}" style="width:100%;"
+						label="Texto de la respuesta Nº 2 (MAX 750 Caracteres)" labelPosition="inField" 
+						required="true" requiredIndicator=" (*)" indicatorPosition="labelRight" 
+						requiredMessage="Es necesario indicar una respuesta a la pregunta. Escriba un texto para la respuesta."
+						validatorMessage="Error de validación: La respuesta debe tener entre 1 y 750 caracteres." >							
+						<f:validateLength maximum="750" minimum="1"/>
+					</ace:textAreaEntry>	
+<!--						
+					<h:selectOneRadio id="respuesta_seleccionada3" layout="pageDirection" style="width:auto;" styleClass="" value="#{preguntas_bean.pregunta.idRespuestaCorrecta}">
+							<f:selectItem itemValue="c" />
+					</h:selectOneRadio>	
+-->							
+					<ace:checkboxButton id="checkBox3" value="#{preguntas_bean.check_3}">
+                    	<ace:ajax execute="@this" event="activate" render="checkBox1 checkBox2 checkBox3 checkBox4" listener="#{preguntas_bean.respuesta_seleccionada}"/>
+                	</ace:checkboxButton>
+                	
+					<ace:textAreaEntry id="respuesta3" value="#{preguntas_bean.pregunta.respuesta3}" style="width:100%;"
+						label="Texto de la respuesta Nº 3 (MAX 750 Caracteres)" labelPosition="inField" 
+						required="true" requiredIndicator=" (*)" indicatorPosition="labelRight" 
+						requiredMessage="Es necesario indicar una respuesta a la pregunta. Escriba un texto para la respuesta."
+						validatorMessage="Error de validación: La respuesta debe tener entre 1 y 750 caracteres." >
+						<f:validateLength maximum="750" minimum="1"/>
+					</ace:textAreaEntry>
+<!--
+					<h:selectOneRadio id="respuesta_seleccionada4" layout="pageDirection" style="width:auto;" styleClass="" value="#{preguntas_bean.pregunta.idRespuestaCorrecta}">
+							<f:selectItem itemValue="d" />
+					</h:selectOneRadio>
+-->					
+					<ace:checkboxButton id="checkBox4" value="#{preguntas_bean.check_4}">
+                    	<ace:ajax execute="@this" event="activate" render="checkBox1 checkBox2 checkBox3 checkBox4" listener="#{preguntas_bean.respuesta_seleccionada}"/>
+                	</ace:checkboxButton>
+					<ace:textAreaEntry id="respuesta4" value="#{preguntas_bean.pregunta.respuesta4}" style="width:100%;"
+						label="Texto de la respuesta Nº 4 (MAX 750 Caracteres)" labelPosition="inField" 
+						required="true" requiredIndicator=" (*)" indicatorPosition="labelRight" 
+						requiredMessage="Es necesario indicar una respuesta a la pregunta. Escriba un texto para la respuesta."
+						validatorMessage="Error de validación: La respuesta debe tener entre 1 y 750 caracteres." >
+						<f:validateLength maximum="750" minimum="1"/>
+					</ace:textAreaEntry>					
+				</h:panelGrid>
+				
+					
+				
+				
+			</h:panelGrid>
+		
+		
+	
+			<h:panelGrid id="panel_botones" columns="6" styleClass="panel_botones">
+				<h:commandButton id="bot_alta" value="Alta" disabled="#{preguntas_bean.activar_alta}" actionListener="#{preguntas_bean.tratar_Accion}" />
+			<!-- 			
+				<f:ajax render="tabla_preguntas" event="click" listener="#{preguntas_bean.tratar_Accion}" >
+					   <f:param value="Alta" name="evento" />
+					</f:ajax> 
+				</h:commandButton>
+				
+				confirmation.show();
+				
+			--> 
+				<h:commandButton value="Baja" disabled="#{preguntas_bean.activar_BMIL}" onclick="confirmationDelete.show();" />
+				<!-- <h:commandButton id="bot_consultas" value="Consulta" actionListener="#{preguntas_bean.tratar_Accion}" /> -->
+				<h:commandButton value="Modificacion" disabled="#{preguntas_bean.activar_BMIL}" onclick="confirmationUpdate.show();" />
+
+<!--  
+				<h:commandButton  id="bot_imprimir" value="Imprimir" disabled="#{preguntas_bean.activar_BMIL}" action="#{pregunta_generico.cargarDatos}" onclick="confirmation.show();">
+					<f:setPropertyActionListener target="#{pregunta_generico.id}" value="#{preguntas_bean.pregunta.id}" />
+				</h:commandButton>
+-->
+					
+				<h:commandButton id="bot_reiniciar" value="Limpiar" disabled="#{preguntas_bean.activar_BMIL}" actionListener="#{preguntas_bean.tratar_Accion}" />
+				<h:commandButton id="bot_salir" value="Salir" actionListener="#{preguntas_bean.tratar_Accion}" />
+			</h:panelGrid>
+			
+<!--			
+			<ace:confirmationDialog id="confirmDialog" widgetVar="confirmation" modal="true" message="¿Desea imprimir el pregunta seleccionado?" header="Confirmación" 
+				width="300" height="200" closable="true" closeOnEscape="false">
+
+				<h:panelGrid width="100%" style="text-align: center;" columns="2" cellspacing="30">
+					 <h:commandButton id="si" value="Si" onclick="confirmation.hide();void(modalwin('/preguntataxi/xhtml/pregunta/pregunta_imprimir.xhtml'));" />
+					<h:commandButton value="Si" onclick="confirmation.hide();void(window.open('/preguntataxi/xhtml/pregunta/pregunta_imprimir.xhtml'));" />
+					<h:commandButton value="No" onclick="confirmation.hide()" />
+				</h:panelGrid>
+			</ace:confirmationDialog>	
+-->			
+			<ace:confirmationDialog id="confirmDialogDelete" widgetVar="confirmationDelete" modal="true" message="se va a proceder a borrar la pregunta. ¿Está realmente seguro de querer borrar la pregunta seleccionado?" header="Confirmación" 
+				width="400" height="250" closable="true" closeOnEscape="false">
+
+				<h:panelGrid width="100%" style="text-align: center;" columns="2" cellspacing="30">
+					<h:commandButton id="bot_baja" value="Si" onclick="confirmationDelete.hide()" actionListener="#{preguntas_bean.tratar_Accion}"/>
+					<h:commandButton value="No" onclick="confirmationDelete.hide()" />
+				</h:panelGrid>
+			</ace:confirmationDialog>	
+			
+			<ace:confirmationDialog id="confirmDialogUpdate" widgetVar="confirmationUpdate" modal="true" message="se va a proceder a realizar la modificación. ¿Está realmente seguro de querer modificar la pregunta seleccionado?" header="Confirmación" 
+				width="400" height="250" closable="true" closeOnEscape="false">
+
+				<h:panelGrid width="100%" style="text-align: center;" columns="2" cellspacing="30">
+					<h:commandButton id="bot_modificaciones" value="Si" onclick="confirmationUpdate.hide()" actionListener="#{preguntas_bean.tratar_Accion}"/>
+					<h:commandButton value="No" onclick="confirmationUpdate.hide()" />
+				</h:panelGrid>
+			</ace:confirmationDialog>	
+			<!--   -->
+		</ace:panel>
+	</h:form>
+</ui:composition>

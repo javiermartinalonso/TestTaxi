@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+	<ace:tabSet id="panel_administracion" clientSide="true">
+<!--
+		<ace:tabPane id="admin_usuarios" label="Gestión Usuario">
+			<ui:include src="/xhtml/usuarios/usuarios_gestion.xhtml" />
+		</ace:tabPane>
+ -->		
+ 		<ace:tabPane id="admin_test" label="Gestión Tests">
+			<ui:include src="/xhtml/test/test_gestion.xhtml" />
+		</ace:tabPane>
+		<ace:tabPane id="admin_preguntas" label="Gestión Preguntas">
+			<ui:include src="/xhtml/preguntas/preguntas_gestion.xhtml" />
+		</ace:tabPane>	
+
+
+	</ace:tabSet>
+</ui:composition>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:decorate template="/xhtml/menu/menu_contenido.xhtml"  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+	
+	<h:form>
+		<h:panelGrid columns="1">
+			<ui:include src="/xhtml/test/#{test_lista_bean.descripcion_lista}.xhtml" />
+			<ui:repeat value="#{test_lista_bean.lista_test}" var="item" varStatus="estado">
+				<h:panelGrid columns="2" columnClasses="col_lista_1,col_lista_2">
+					 <!-- ventana modal en internet explorer abre 2 pestañas
+					 <a href="#" onclick="void(window.open('http://localhost:8080/testtaxi/xhtml/test/test.xhtml','nueva','scrollbars=yes,fullscreen=yes'));" target="_blank" >#{item.descripcion}</a>
+					 -->
+					 <!--pestaña nueva abre en una pestaña pero no es modal
+					 <h:link value="#{item.descripcion}" outcome="/xhtml/test/test.xhtml')" target="_blank"/>
+					 -->
+					<!--ventana modal no me permite pasar valores al bean
+					<a href="#" onclick="void(modalwin('/testtaxi/xhtml/test/test.xhtml'));"  >#{item.descripcion}</a>
+					-->
+					
+					
+					
+					
+					<h:commandLink onclick="confirmation.show();" value="#{item.descripcion}" action="#{test_generico.cargarDatos}">
+						<f:setPropertyActionListener target="#{test_generico.id}" value="#{item.id}" />
+					</h:commandLink>
+					<!-- <h:commandLink onclick="void(modalwin('/testtaxi/xhtml/test/test.xhtml'));" actionListener="#{test_generico.cargarDatos(#{item.)}">#{item.descripcion}</h:commandLink>
+					 -->
+
+<f:ajax event=""
+					render="@this  formu_listas:lista_provincias " execute="@this" />
+
+
+
+
+
+					<ace:confirmationDialog id="confirmDialog" 
+						widgetVar="confirmation"
+						modal="true" 
+						message="¿Comenzar test?"
+						header="Modal Dialog" width="300" height="200" closable="true"
+						closeOnEscape="false">
+
+						<h:panelGrid width="100%" style="text-align: center;" columns="2"
+							cellspacing="30">
+							<h:commandButton id="yes" value="Yes" onclick="confirmation.hide();void(modalwin('/testtaxi/xhtml/test/test.xhtml'));" />
+							<h:commandButton id="no" value="No" onclick="confirmation.hide()" />
+						</h:panelGrid>
+					</ace:confirmationDialog>
+				</h:panelGrid>
+			</ui:repeat>
+		</h:panelGrid>
+	</h:form>	
+</ui:decorate>

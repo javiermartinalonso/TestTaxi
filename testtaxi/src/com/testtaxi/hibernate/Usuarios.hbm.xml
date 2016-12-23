@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.testtaxi.hibernate.Usuarios" table="usuarios" catalog="test_taxi">
+        <id name="username" type="java.lang.String">
+            <column name="username" length="45" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="java.lang.String">
+            <column name="password" length="45" not-null="true" />
+        </property>
+        <property name="rol" type="java.lang.String">
+            <column name="rol" length="13" not-null="true" />
+        </property>
+        <property name="nombre" type="java.lang.String">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="apellido1" type="java.lang.String">
+            <column name="apellido_1" length="45" not-null="true" />
+        </property>
+        <property name="apellido2" type="java.lang.String">
+            <column name="apellido_2" length="45" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="email" length="45" />
+        </property>
+        <property name="telefono" type="java.lang.String">
+            <column name="telefono" length="45" />
+        </property>
+        <property name="activo" type="java.lang.String">
+            <column name="activo" length="9" not-null="true" />
+        </property>
+        <property name="fechaAlta" type="java.util.Date">
+            <column name="fecha_alta" length="10" not-null="true" />
+        </property>
+        <property name="fechaVencimiento" type="java.util.Date">
+            <column name="fecha_vencimiento" length="10" not-null="true">
+                <comment>fecha vencimiento licencia de uso de la aplicacion</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

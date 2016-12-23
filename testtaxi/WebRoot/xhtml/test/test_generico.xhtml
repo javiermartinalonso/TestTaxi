@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+
+<!--
+	<ace:panel visible="#{test_generico.barra_visible}" >
+		<ace:progressBar id="progressBar" widgetVar="clientSideBar" />
+	</ace:panel>
+  -->
+  
+	<ace:panel id="panel_test" style="width: 98%" visible="#{test_generico.test_visible}">
+
+		<h2 class="cabecera_test">#{test_generico.descripcion}</h2>
+		<ui:include src="/xhtml/test/cronometros.xhtml" />
+
+
+		<h:panelGrid id="panel_cuestionario" columns="1"
+			styleClass="panel_cuestionario">
+			<ui:repeat value="#{test_generico.lista_respuestas}" var="item"
+				varStatus="estado">
+				<h:panelGrid id="panel_pregunta_test_${estado.index+1}" columns="2" columnClasses="col_1,col_2" styleClass="pregunta_test">
+					<h:outputText id="num_pregunta_#{estado.index}"	value="#{estado.index+1}" />
+					<h:outputText id="texto_pregunta_#{estado.index}" value="#{item.textoPregunta}" />
+					<h:outputText id="puntuacion_#{estado.index}" value="Puntos: #{item.puntuacion}" styleClass="pregunta_puntuacion" />
+					<h:graphicImage id="imagen_#{estado.index}" style="display:#{item.display}" value="#{item.foto}" styleClass="objeto_centrado" />
+					<h:outputText id="indicaciones_pregunta_#{estado.index}" value="#{item.indicacionesPregunta}" styleClass="pregunta_indicaciones" />
+					<h:panelGrid id="panel_seleccion_respuesta_#{estado.index}" columns="1" styleClass="pregunta_seleccion_respuesta">
+						<h:selectOneRadio id="pregunta_#{estado.index}" layout="pageDirection" styleClass="respuesta" value="#{item.idRespuestaCorrecta}">
+							<f:selectItem itemValue="a" itemLabel="#{item.respuesta1}" />
+							<f:selectItem itemValue="b" itemLabel="#{item.respuesta2}" />
+							<f:selectItem itemValue="c" itemLabel="#{item.respuesta3}" />
+							<f:selectItem itemValue="d" itemLabel="#{item.respuesta4}" />
+						</h:selectOneRadio>
+					</h:panelGrid>
+				</h:panelGrid>
+			</ui:repeat>
+		</h:panelGrid>
+		<h:panelGrid columns="2" styleClass="panel_botones">
+			<!-- 
+		<h:commandButton id="bot_guardar" value="Guardar sin enviar" />
+		<h:commandButton id="bot_enviar" value="Enviar todo y terminar" />
+ -->
+			<h:commandButton id="response" value="Terminar y enviar" onclick="confirmFinalizar.show();" />
+			<h:commandButton id="enviar_oculto" style="display: none" value="Terminar y enviar" action="#{test_generico.calcular_resultado_test}" />
+			<!-- <h:commandButton value="Reset" type="reset" onclick="countDownRefresh(document.getElementById('formu_test:hora_restante').value, 
+			document.getElementById('formu_test:minutos_restante').value, parseInt(document.getElementById('formu_test:segundos_restante').value));  
+			countUpRefresh(document.getElementById('formu_test:hora_duracion').value, document.getElementById('formu_test:minutos_duracion').value, document.getElementById('formu_test:segundos_duracion').value); window.scrollTo(0,0); " />
+		 -->
+		</h:panelGrid>
+
+		<ace:confirmationDialog id="confirmFinalizar"
+			widgetVar="confirmFinalizar" modal="true"
+			message="¿Quieres finalizar el examen realmente y pasar a ver el resultado la corrección del test? Aún tienes tiempo para repasar tus respuestas."
+			header="FINALIZAR TEST" width="450" height="250" closable="false"
+			closeOnEscape="false" styleClass="">
+
+			<h:panelGrid width="100%" style="text-align: center;" columns="2" cellspacing="30">
+				<h:commandButton id="finalizar" value="finalizar" onclick="confirmFinalizar.hide();document.getElementById('formu_test:enviar_oculto').click();window.scrollTo(0,0);" />
+				<h:commandButton id="cancelar" value="cancelar"	onclick="confirmFinalizar.hide()" />
+			</h:panelGrid>
+		</ace:confirmationDialog>
+	</ace:panel>
+	
+	<!--	  
+	<ui:include src="/xhtml/printer/printer.xhtml" />
+	 -->
+
+</ui:composition>

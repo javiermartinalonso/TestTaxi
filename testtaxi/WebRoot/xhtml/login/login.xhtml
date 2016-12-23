@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+	<ace:panel id="ventana_login" visible="#{login_bean.login_visible}" styleClass="ventana_login" header="#{idioma['formu.login.eti.cabecerapanel']}">
+		<h:form id="formu_login">
+			<h:panelGrid id="panel_login" columns="4" >
+ 
+				<h:outputText id="eti_nombre" value="Id usuario: " />
+<!--				<h:inputText id="nombre_usuario" value="#{login_bean.nombre_usuario}" 
+				required="true" requiredMessage="Debe introducir un identificador de usuario.">
+  					
+					<ace:ajax render="nombre_usuario_msg allMsgs" listener="#{login_bean.blurListener}" />
+					
+				</h:inputText>
+				<ace:message id="nombre_usuario_msg" for="nombre_usuario" initEffect="fade" changeEffect="size"/>
+-->				
+				<ace:textEntry id="user_id" value="#{login_bean.nombre_usuario}" required="true" 
+					requiredMessage="Es necesario indicar un identificador de usuario."
+					validatorMessage="Error de validación: El id debe tener entre 4 y 20 caracteres.">
+					<f:validateLength maximum="20" minimum="4"/>
+				</ace:textEntry>
+				<h:outputText value="(*)" />
+				<ace:message id="nombre_usuario_msg" for="user_id" initEffect="fade" changeEffect="size"/>
+				
+				<h:outputText id="eti_clave" value="Clave: " />			
+				<h:inputSecret id="clave_usuario" value="#{login_bean.clave_usuario}" redisplay="true"
+				required="true" requiredMessage="Debe introducir una clave." 
+				validatorMessage="Error de validacion:  La clave debe tener entre 6 y 20 caracteres."
+				styleClass="ui-inputfield ui-textentry ui-widget ui-state-default ui-corner-all ui-state-required" >
+					<f:validateLength maximum="20" minimum="6"/>
+				</h:inputSecret> 
+				<h:outputText value="(*)" />
+				<ace:message id="clave_usuarioo_msg" for="clave_usuario" initEffect="fade" changeEffect="size"/>
+ 
+ <!--  REVISA VALIDACIon del formulario 
+				<ace:textEntry id="nombre_usuario" value="#{login_bean.nombre_usuario}" label="Usuario" labelPosition="left" required="true" secret="true">
+    				<ace:ajax render="nombre_usuario_msg allMsgs" listener="#{login_bean.blurListener}"/>
+				</ace:textEntry>
+				<ace:message id="nombre_usuario_msg" for="nombre_usuario"   initEffect="fade" changeEffect="size"/>
+
+				<ace:textEntry id="clave_usuario" value="#{login_bean.clave_usuario}" label="Clave" labelPosition="left" 
+				required="true" requiredIndicator="(*)" requiredMessage="Debe introducir una clave." >
+    				<ace:ajax render="clave_usuario_msg allMsgs" listener="#{login_bean.blurListener}"/>
+				</ace:textEntry>
+								<ace:message id="clave_usuario_msg" for="clave_usuario"   initEffect="fade" changeEffect="size"/>	
+-->	
+
+			
+
+			
+
+			</h:panelGrid>
+			<h:panelGrid columns="1" styleClass="panel_botones">
+				<h:commandButton id="boton_login" value="Comprobar" actionListener="#{login_bean.comprobar_Credenciales}" />
+			</h:panelGrid>
+		</h:form>
+	</ace:panel>
+</ui:composition>

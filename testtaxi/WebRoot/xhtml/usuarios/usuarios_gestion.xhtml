@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+	<h:form id="formu_usuario"> 
+	
+		
+	<ace:dataTable id="tabla_usuarios" value="#{usuario_bean.lista_usuarios}" var="usuario" rows="10" 
+				   paginator="true" paginatorPosition="bottom" paginatorAlwaysVisible="true"
+				   selectionMode="single" rowSelectListener="#{usuario_bean.tratar_Seleccion}" 
+				   rowUnselectListener="#{usuario_bean.tratar_Deseleccion}" styleClass="tabla_usuarios">
+				  
+		<ace:columnGroup id="cabecera_tabla" type="header">
+			<ace:row>
+				<ace:column id="texto_cabecera" colspan="11" headerText="Lista de usuarios" />
+			</ace:row>
+			<ace:row>
+				<ace:column id="colum_id_usuario" headerText="Username" sortBy="#{usuario.username}" filterBy="#{usuario.username}" filterMatchMode="contains" /> 
+				<ace:column id="colum_rol" headerText="Rol" sortBy="#{usuario.rol}" filterBy="#{usuario.rol}" filterMatchMode="contains"/>
+				<ace:column id="colum_nombre" headerText="Nombre" sortBy="#{usuario.nombre}" filterBy="#{usuario.nombre}" filterMatchMode="contains" />
+				<ace:column id="colum_Apellido1" headerText="1º Apellido" sortBy="#{usuario.apellido1}" filterBy="#{usuario.apellido1}" filterMatchMode="contains" />
+				<ace:column id="colum_Apellido2" headerText="2º Apellido" sortBy="#{usuario.apellido2}" filterBy="#{usuario.apellido2}" filterMatchMode="contains" />
+				<ace:column id="colum_email" headerText="email" sortBy="#{usuario.email}" filterBy="#{usuario.email}" filterMatchMode="contains"/>
+				<ace:column id="colum_telefono" headerText="telefono" sortBy="#{usuario.telefono}" filterBy="#{usuario.telefono}" filterMatchMode="contains" />
+				<!-- <ace:column id="colum_activo" headerText="Activo" /> -->
+				<ace:column id="colum_fechaAlta" headerText="Fecha Alta" sortBy="#{usuario.fechaAlta}" />
+				<ace:column id="colum_fechaVencimiento" headerText="Fecha Vencimiento" sortBy="#{usuario.fechaVencimiento}" />
+			</ace:row>
+		</ace:columnGroup>
+
+		<ace:column id="col_usuario">
+			<h:outputText id="codigo_usuario" value="#{usuario.username}" />
+		</ace:column>
+		<ace:column id="col_rol">
+			<h:outputText id="rol" value="#{usuario.rol}" />
+		</ace:column>
+		<ace:column id="col_nombre">
+			<h:outputText id="nombre" value="#{usuario.nombre}" />
+		</ace:column>
+		<ace:column id="col_1erapellido">
+			<h:outputText id="apellido1" value="#{usuario.apellido1}" />
+		</ace:column>
+		<ace:column id="col_2apellido">
+			<h:outputText id="apellido2" value="#{usuario.apellido2}" />
+		</ace:column>		
+		<ace:column id="col_email">
+			<h:outputText id="email" value="#{usuario.email}" />
+		</ace:column>
+		<ace:column id="col_telefono">
+			<h:outputText id="telefono" value="#{usuario.telefono}" />
+		</ace:column>	
+		<ace:column id="col_fechaalta">
+			<h:outputText id="fechaalta" value="#{usuario.fechaAlta}">
+				<f:convertDateTime type="date" />
+			</h:outputText>
+		</ace:column>
+		<ace:column id="col_fechavencimiento">
+			<h:outputText id="fechavencimiento" value="#{usuario.fechaVencimiento}">
+				<f:convertDateTime type="date" />
+			</h:outputText>
+		</ace:column>			
+
+	</ace:dataTable>	
+	
+	
+	<ace:panel id="ace_panel_usuario" header="Ficha de Usuario">
+		<h:panelGrid id="panel_usuario" columns="4">
+			
+			<h:outputText value="Id usuario:" />
+			<ace:textEntry id="user_id" value="#{usuario_bean.user.username}" 										   
+				disabled="#{usuario_bean.activar_alta}" required="true"  
+				requiredMessage="Es necesario indicar un identificador de usuario."
+				validatorMessage="Error de validación: El id debe tener entre 4 y 20 caracteres.">
+				<f:validateLength maximum="20" minimum="4"/>
+			</ace:textEntry>
+			<h:outputText value="(*)" />
+			<ace:message id="nombre_usuario_msg" for="user_id" initEffect="fade" changeEffect="size"/>
+				
+			<h:outputText value="Clave: " />			
+			<h:inputSecret id="clave_usuario" value="#{usuario_bean.user.password}" redisplay="true"
+				required="true" requiredMessage="Debe introducir una clave." 
+				validatorMessage="Error de validacion:  La clave debe tener entre 6 y 20 caracteres."
+				styleClass="ui-inputfield ui-textentry ui-widget ui-state-default ui-corner-all ui-state-required" >
+					<f:validateLength maximum="20" minimum="6"/>
+			</h:inputSecret>
+				 
+			<h:outputText value="(*)" />
+			<ace:message id="clave_usuarioo_msg" for="clave_usuario" initEffect="fade" changeEffect="size"/>
+				
+			<h:outputText value="Rol:" />
+			<ace:simpleSelectOneMenu id="user_rol" value="#{usuario_bean.user.rol}" > 
+				<f:selectItems id="opciones_rol" value="#{usuario_bean.lista_roles}" />
+            </ace:simpleSelectOneMenu>
+            <h:outputText value="" />
+            <ace:message id="user_rol_msg" for="user_rol" initEffect="fade" changeEffect="size"/>
+			
+			<h:outputText value="Nombre:" />
+			<ace:textEntry id="user_nombre" value="#{usuario_bean.user.nombre}" 
+				required="true"  
+				requiredMessage="Es necesario indicar el nombre."
+				validatorMessage="Error de validacion: El Nombre debe tener entre 2 y 20 caracteres.">
+				<f:validateLength maximum="20" minimum="2"/>
+			</ace:textEntry>
+			<h:outputText value="(*)" />
+			<ace:message id="user_nombre_msg" for="user_nombre" initEffect="fade" changeEffect="size"/>
+			
+			<h:outputText value="1º apellido:" />
+			<ace:textEntry id="user_apellido1" value="#{usuario_bean.user.apellido1}"  
+				required="true"  
+				requiredMessage="Es necesario indicar el primer apellido."
+				validatorMessage="Error de validacion: El apellido debe tener entre 2 y 20 caracteres.">
+				<f:validateLength maximum="20" minimum="2"/>
+			</ace:textEntry>
+			<h:outputText value="(*)" style="text-align: left;"/>
+			<ace:message id="user_apellido1_msg" for="user_apellido1" initEffect="fade" changeEffect="size"/>
+			
+			<h:outputText value="2º apellido:" />
+			<ace:textEntry id="user_apellido2" value="#{usuario_bean.user.apellido2}"   
+				validatorMessage="Info: Error de validacion: El apellido debe tener un maáximo de 20 caracteres.">
+				<f:validateLength maximum="20" />
+			</ace:textEntry>
+			<h:outputText value="" />
+			<ace:message id="user_apellido2_msg" for="user_apellido2" initEffect="fade" changeEffect="size"/>	
+				
+			<h:outputText value="E-mail:" />
+			<ace:textEntry id="user_email" value="#{usuario_bean.user.email}"  
+				validatorMessage="Error de validacion: ">
+			</ace:textEntry>
+			<h:outputText value="" />
+			<ace:message id="user_email_msg" for="user_email" initEffect="fade" changeEffect="size"/>	
+			
+			<h:outputText value="Telefono:" />
+			<ace:textEntry id="user_telefono" value="#{usuario_bean.user.telefono}"  
+				validatorMessage="Error de validacion: ">
+			</ace:textEntry>
+			<h:outputText value="" />
+			<ace:message id="user_telefono_msg" for="user_telefono" initEffect="fade" changeEffect="size"/>			
+			
+			<h:outputText value="Fecha alta:" />		
+			<ace:dateTimeEntry value="#{usuario_bean.user.fechaAlta}" locale="es" renderAsPopup="true" id="fecha_alta" pattern="dd/MM/yyyy" navigator="true" disabled="true">
+			</ace:dateTimeEntry>
+			<h:outputText value="" />
+			<h:outputText value="" />
+			
+			<h:outputText value="Fecha Vencimiento:" />
+			<ace:dateTimeEntry value="#{usuario_bean.user.fechaVencimiento}" locale="es" renderAsPopup="true" id="fecha_vencimiento" pattern="dd/MM/yyyy" 
+			 mindate="#{usuario_bean.fecha_actual}" navigator="true" readOnlyInputText="true">
+			</ace:dateTimeEntry>
+			<h:outputText value="" />
+			<h:outputText value="" />
+						
+		</h:panelGrid>
+		<h:panelGrid id="panel_botones" columns="5" styleClass="panel_botones_2">
+			<h:commandButton id="bot_alta" value="Alta" disabled="#{usuario_bean.activar_alta}" actionListener="#{usuario_bean.tratar_Accion}" />
+<!-- 		<f:ajax render="tabla_usuarios" event="click" listener="#{usuario_bean.tratar_Accion}" >
+			   <f:param value="Alta" name="evento" />
+			</f:ajax> 
+			</h:commandButton>
+--> 
+			<h:commandButton value="Baja" disabled="#{usuario_bean.activar_BMIL}" onclick="confirmationDelete.show();" />
+			<!-- <h:commandButton id="bot_consultas" value="Consulta" actionListener="#{test_bean.tratar_Accion}" /> -->
+			<h:commandButton value="Modificacion" disabled="#{usuario_bean.activar_BMIL}" onclick="confirmationUpdate.show();" />
+						
+			<!--  			
+			<h:commandButton  id="bot_imprimir" value="Imprimir" disabled="#{test_bean.activar_BMIL}" action="#{test_generico.cargarDatos}" onclick="confirmation.show();">
+				<f:setPropertyActionListener target="#{test_generico.id}" value="#{test_bean.test.id}" />
+			</h:commandButton>
+			-->
+			<h:commandButton id="bot_reiniciar" value="Limpiar" disabled="#{usuario_bean.activar_BMIL}" actionListener="#{usuario_bean.tratar_Accion}" />				
+			<h:commandButton id="bot_salir" value="Salir" actionListener="#{usuario_bean.tratar_Accion}" />
+		</h:panelGrid>
+			
+			
+		<ace:confirmationDialog id="confirmDialog" widgetVar="confirmation" modal="true" message="¿Desea imprimir el usuario seleccionado?" header="Confirmación" 
+			width="300" height="200" closable="true" closeOnEscape="false">
+
+			<h:panelGrid width="100%" style="text-align: center;" columns="2" cellspacing="30">
+			<!-- <h:commandButton id="si" value="Si" onclick="confirmation.hide();void(modalwin('/testtaxi/xhtml/test/test_imprimir.xhtml'));" /> -->
+				<h:commandButton value="Si" onclick="confirmation.hide();void(window.open('/testtaxi/xhtml/test/test_imprimir.xhtml'));" />
+				<h:commandButton value="No" onclick="confirmation.hide()" />
+			</h:panelGrid>
+		</ace:confirmationDialog>
+			
+		<ace:confirmationDialog id="confirmDialogDelete" widgetVar="confirmationDelete" modal="true" message="se va a proceder a borrar el usuario. ¿Está realmente seguro de querer borrar el usuario seleccionado?" header="Confirmación" 
+			width="400" height="250" closable="true" closeOnEscape="false">
+
+			<h:panelGrid width="100%" style="text-align: center;" columns="2" cellspacing="30">
+				<h:commandButton id="bot_baja" value="Si" onclick="confirmationDelete.hide()" actionListener="#{usuario_bean.tratar_Accion}"/>
+				<h:commandButton value="No" onclick="confirmationDelete.hide()" />
+			</h:panelGrid>
+		</ace:confirmationDialog>	
+			
+		<ace:confirmationDialog id="confirmDialogUpdate" widgetVar="confirmationUpdate" modal="true" message="se va a proceder a realizar la modificación. ¿Está realmente seguro de querer modificar el usuario seleccionado?" header="Confirmación" 
+			width="400" height="250" closable="true" closeOnEscape="false">
+
+			<h:panelGrid width="100%" style="text-align: center;" columns="2" cellspacing="30">
+				<h:commandButton id="bot_modificaciones" value="Si" onclick="confirmationUpdate.hide()" actionListener="#{usuario_bean.tratar_Accion}"/>
+				<h:commandButton value="No" onclick="confirmationUpdate.hide()" />
+			</h:panelGrid>
+		</ace:confirmationDialog>	
+	</ace:panel>
+
+	</h:form>
+</ui:composition>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+	<h:panelGrid id="panel_pregunta_test" columns="2" columnClasses="col_1,col_2" styleClass="pregunta_test">
+		<h:outputText id="num_pregunta" value="#{pregunta_test.num_pregunta}" />
+		<h:outputText id="texto_pregunta" value="#{pregunta_test.texto_pregunta}" />
+		<h:outputText id="puntuacion" value="#{pregunta_test.puntuacion}" styleClass="pregunta_puntuacion"/>
+		<h:graphicImage style="display:#{pregunta_test.display}" value="#{pregunta_test.imagen}" styleClass="objeto_centrado"/>
+		<h:outputText id="indicaciones_pregunta" value="#{pregunta_test.indicaciones_pregunta}" styleClass="pregunta_indicaciones"/>
+		<h:panelGrid id="panel_seleccion_respuesta" columns="1" styleClass="pregunta_seleccion_respuesta">
+			<h:selectOneRadio id="#{pregunta_test.num_pregunta}" layout="pageDirection" styleClass="respuesta" value="#{pregunta_test.respuesta_seleccionada}">
+				<f:selectItems value="#{pregunta_test.lista_respuestas}"/>
+			</h:selectOneRadio>
+		</h:panelGrid>
+	</h:panelGrid>
+</ui:composition>

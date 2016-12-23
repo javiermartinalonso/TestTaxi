@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+	
+	<h:panelGrid id="panel_cronometro"  columns="1" styleClass="panel_cronometro">
+		<h:outputText id="tiempo_total" value="Tiempo total: #{examen_generico.duracion} minutos" styleClass="tiempo_total"/>
+		<h:panelGrid id="panel_cronometros" columns="12" styleClass="panel_cronometros">
+			<h:outputText value="Transcurrido: " styleClass="cronometro_restante" />		
+			
+			<!--  -->
+			<h:inputText id="hora_duracion" styleClass="form_input" style="display:none" disabled="true" value="00" />
+			<h:outputText value=" : "  style="display:none" />
+			<h:inputText id="minutos_duracion" styleClass="form_input" disabled="true" value="00" />
+			<h:outputText value=" : " />
+			<h:inputText id="segundos_duracion" styleClass="form_input" disabled="true" value="00" />
+			<h:outputText value="Restante: " styleClass="cronometro_transcurrido" />
+			<h:inputText id="hora_restante" styleClass="form_input" style="display:none"  disabled="true" value="00"  />
+			<h:outputText value=" : "  style="display:none" />
+			<h:inputText id="minutos_restante" styleClass="form_input" disabled="true" value="00" />
+			<h:outputText value=" : " />
+			<h:inputText id="segundos_restante" styleClass="form_input" disabled="true" value="00" />
+		</h:panelGrid>
+	</h:panelGrid>
+	
+ </ui:composition>

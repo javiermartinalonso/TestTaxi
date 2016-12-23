@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+  
+	<ace:panel id="panel_test" style="width: 98%" visible="#{examen_generico.examen_visible}">
+		<h:panelGrid id="panel_cuestionario" columns="1" styleClass="panel_cuestionario" border="1" style="vertical-align: middle">
+			<h2 class="cabecera_test">#{examen_generico.test_actual.descripcion}</h2>
+			
+			<h:panelGrid columns="3" columnClasses="examen_cabecera_1,examen_cabecera_2,examen_cabecera_3" style="width: 100%" border="0">
+				<ui:include src="/xhtml/examen/cronometros.xhtml" />
+				<ui:include src="/xhtml/examen/navegacion_preguntas.xhtml" />
+
+				<h:commandButton id="response" value="#{examen_generico.texto_boton}" onclick="confirmFinalizar.show();" />
+				<h:commandButton id="enviar_oculto" style="display:none" value="Terminar y enviar" onclick="countDownRefresh(0, #{examen_generico.duracion_siguiente}, 0);countUpRefresh(0, 0, 0);" 
+				action="#{examen_generico.siguienteTest}" />
+			</h:panelGrid>
+
+
+			<h:panelGrid id="panel_pregunta_examen" columns="2" border="0" style="width: 100%">
+				<h:panelGrid id="panel_pregunta" columns="1" style="width: 100%">
+					<h:outputText id="texto_pregunta" value="#{examen_generico.respuesta_actual.textoPregunta}" />
+					
+					<h:panelGrid id="panel_seleccion_respuesta" columns="1" styleClass="pregunta_seleccion_respuesta">
+						<h:selectOneRadio id="pregunta" layout="pageDirection" styleClass="respuesta" value="#{examen_generico.respuesta_actual.idRespuestaCorrecta}" onchange="preguntasRefresh();">
+							<f:selectItem itemValue="a" itemLabel="#{examen_generico.respuesta_actual.respuesta1}" />
+							<f:selectItem itemValue="b" itemLabel="#{examen_generico.respuesta_actual.respuesta2}" />
+							<f:selectItem itemValue="c" itemLabel="#{examen_generico.respuesta_actual.respuesta3}" />
+							<f:selectItem itemValue="d" itemLabel="#{examen_generico.respuesta_actual.respuesta4}" />
+							<!-- <ace:ajax execute="@this" event="" render="checkBox1 checkBox2 checkBox3 checkBox4" listener="#{preguntas_bean.respuesta_seleccionada}"/> -->
+						</h:selectOneRadio>
+					</h:panelGrid>
+				</h:panelGrid>
+				
+				<h:panelGrid id="panel_imagen" columns="1" style="width: auto">
+					<h:graphicImage id="imagen" style="display:#{examen_generico.respuesta_actual.display}" value="#{examen_generico.respuesta_actual.foto}" styleClass="objeto_centrado" />
+				</h:panelGrid>
+			</h:panelGrid>
+
+			
+			<h:panelGrid columns="1" style=" font-size: x-small; margin-right: auto; margin-left: auto">
+				<h:panelGrid columns="4" border="0" >		
+					<h:commandButton id="bot_anterior" value="Anterior" disabled="#{examen_generico.activar_anterior}" action="#{examen_generico.respuesta_anterior}" onclick="activarActualizarPreguntas(); preguntaActualDecrement()">		
+						<!-- <ace:ajax execute="@this" event="click" listener="#{examen_generico.respuesta_anterior}"/> -->
+					</h:commandButton>					
+			    	
+			    	<h:commandButton id="bot_siguiente" value="Siguiente" disabled="#{examen_generico.activar_siguiente}" action="#{examen_generico.respuesta_siguiente}" onclick="activarActualizarPreguntas(); preguntaActualIncrement()">		
+						<!-- <ace:ajax execute="@this" event="click" listener="#{examen_generico.respuesta_siguiente}"/> -->
+					</h:commandButton>		
+    			</h:panelGrid>
+			</h:panelGrid>
+		</h:panelGrid>
+		
+		<ace:confirmationDialog id="confirmFinalizar"
+			widgetVar="confirmFinalizar" modal="true"
+			message="¿Realmente estás seguro de querer finalizar la sección actual? Aún tienes tiempo para repasar tus respuestas."
+			header="CONTINUAR" width="450" height="250" closable="false"
+			closeOnEscape="false" styleClass="">
+
+			<h:panelGrid width="100%" style="text-align: center;" columns="2" cellspacing="30">
+				<h:commandButton id="continuar" value="continuar" onclick="confirmFinalizar.hide();document.getElementById('formu_test:enviar_oculto').click();" />
+				<h:commandButton id="cancelar" value="cancelar"	onclick="confirmFinalizar.hide()" />
+			</h:panelGrid>
+		</ace:confirmationDialog>
+	</ace:panel>
+
+</ui:composition>

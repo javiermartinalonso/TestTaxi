@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+	<h2 class="cabecera_test">#{test_generico.descripcion}</h2>
+	<h2 class="cabecera_test">Revisión del examen - Intento X</h2>
+
+	<div class="tabla_centrada">
+		<h:panelGrid border="1" columns="1">
+			<h:outputText styleClass="cabecera_revisión_test" value="Comenzado el #{test_generico.fecha_comienzo}" />
+			<h:outputText styleClass="cabecera_revisión_test" value="Completado el #{test_generico.fecha_finalizacion} " />
+			<h:outputText styleClass="cabecera_revisión_test" value="Tiempo empleado #{test_generico.tiempo_realizacion}" />
+			<h:outputText styleClass="cabecera_revisión_test" value="Calificacion #{test_generico.puntuacion} de un total de #{test_generico.numero_preguntas} (#{test_generico.porcentaje})" />
+			<h:outputText styleClass="cabecera_revisión_test" value="#{test_generico.comentario_resultado} " />
+		</h:panelGrid>
+	</div>	
+</ui:composition>

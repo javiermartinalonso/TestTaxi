@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+	<div class="tabla_centrada">
+		<h:panelGrid border="1" columns="1">
+			<h3 class="cabecera_test">REVISIÓN DEL EXAMEN</h3>
+			<h:outputText styleClass="cabecera_revisión_test" value="Comenzado el #{examen_generico.fecha_comienzo}" />
+			<h:outputText styleClass="cabecera_revisión_test" value="Completado el #{examen_generico.fecha_finalizacion} " />
+			<h:outputText styleClass="cabecera_revisión_test" value="Tiempo empleado #{examen_generico.tiempo_realizacion}" />
+			<h:outputText styleClass="cabecera_revisión_test" value="El resultado del examen es #{examen_generico.resultado_examen}" />
+			<h2 class="cabecera_test">DESGLOSE DEL RESULTADO DE CADA MÓDULO DE TEST</h2>
+			
+			<h3 class="cabecera_test">PSICOTECNICO</h3>
+			<h:outputText styleClass="cabecera_revisión_test" value="El resultado del módulo es #{examen_generico.resultado_psicotecnico}" />
+			<h:outputText styleClass="cabecera_revisión_test" value="Calificacion #{examen_generico.puntuacion_psicotecnico} de un total de #{examen_generico.test_psicotecnico.numPreguntas}" />
+			<h:outputText styleClass="cabecera_revisión_test" value="#{examen_generico.comentario_resultado_psicotecnico} " />
+			
+			<h3 class="cabecera_test">PLANOS</h3>
+			<h:outputText styleClass="cabecera_revisión_test" value="El resultado del módulo es #{examen_generico.resultado_planos}" />			
+			<h:outputText styleClass="cabecera_revisión_test" value="Calificacion #{examen_generico.puntuacion_planos} de un total de #{examen_generico.test_planos.numPreguntas}" />
+			<h:outputText styleClass="cabecera_revisión_test" value="#{examen_generico.comentario_resultado_planos} " />
+					
+			<h3 class="cabecera_test">LEGISLACIÓN</h3>
+			<h:outputText styleClass="cabecera_revisión_test" value="El resultado del módulo es #{examen_generico.resultado_legislacion}" />				
+			<h:outputText styleClass="cabecera_revisión_test" value="Calificacion #{examen_generico.puntuacion_legislacion} de un total de #{examen_generico.test_legislacion.numPreguntas}" />
+			<h:outputText styleClass="cabecera_revisión_test" value="#{examen_generico.comentario_resultado_legislacion} " />
+			
+			<h3 class="cabecera_test">TARIFAS</h3>
+			<h:outputText styleClass="cabecera_revisión_test" value="El resultado del módulo es #{examen_generico.resultado_tarifas}" />				
+			<h:outputText styleClass="cabecera_revisión_test" value="Calificacion #{examen_generico.puntuacion_tarifas} de un total de #{examen_generico.test_tarifas.numPreguntas}" />
+			<h:outputText styleClass="cabecera_revisión_test" value="#{examen_generico.comentario_resultado_tarifas} " />
+			
+			<h3 class="cabecera_test">ITINERARIOS</h3>
+			<h:outputText styleClass="cabecera_revisión_test" value="El resultado del módulo es #{examen_generico.resultado_itinerarios}" />				
+			<h:outputText styleClass="cabecera_revisión_test" value="Calificacion #{examen_generico.puntuacion_itinerarios} de un total de #{examen_generico.test_itinerarios.numPreguntas}" />
+			<h:outputText styleClass="cabecera_revisión_test" value="#{examen_generico.comentario_resultado_itinerarios} " />
+			
+			<h3 class="cabecera_test">PUNTOS DE INTERÉS</h3>
+			<h:outputText styleClass="cabecera_revisión_test" value="El resultado del módulo es #{examen_generico.resultado_puntos_interes}" />				
+			<h:outputText styleClass="cabecera_revisión_test" value="Calificacion #{examen_generico.puntuacion_puntos_interes} de un total de #{examen_generico.test_puntos_interes.numPreguntas}" />
+			<h:outputText styleClass="cabecera_revisión_test" value="#{examen_generico.comentario_resultado_puntos_interes} " />
+		
+		</h:panelGrid>
+	</div>	
+</ui:composition>

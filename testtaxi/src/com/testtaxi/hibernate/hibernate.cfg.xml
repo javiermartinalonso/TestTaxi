@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+<session-factory>
+	<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+	  
+	<property name="connection.url">jdbc:mysql://localhost:3306/test_taxi?autoReconnect=true</property>
+<!--
+	<property name="connection.url">
+		jdbc:mysql://37.187.145.158:3306/test_taxi
+	</property>
+	-->	
+	<property name="connection.username">jmartina</property>
+	<property name="connection.password">Passw0rd2014</property>
+	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+	<property name="myeclipse.connection.profile">MySQL</property>
+
+
+	<!-- ******** ZONA DE CONFIGURACION DE C3P0 CORRIGE ERROR: The last packet successfully received... ******** -->
+	<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+	<property name="hibernate.c3p0.acquire_increment">2</property>
+	<property name="hibernate.c3p0.idle_test_period">300</property>
+	<property name="hibernate.c3p0.timeout">1800</property>
+	<property name="hibernate.c3p0.max_size">25</property>
+	<property name="hibernate.c3p0.min_size">3</property>
+	<property name="hibernate.c3p0.max_statement">10</property>
+	<property name="hibernate.c3p0.preferredTestQuery">select 1;</property>
+	<property name="hibernate.c3p0.validate">true</property>
+
+	<!-- ******** ZONA DE MAPEO DE TABLAS ******** -->
+	<mapping resource="com/testtaxi/hibernate/Usuarios.hbm.xml" />
+	<mapping resource="com/testtaxi/hibernate/Preguntas.hbm.xml" />
+	<mapping resource="com/testtaxi/hibernate/Tests.hbm.xml" />
+	<!-- ****** FIN ZONA DE MAPEO DE TABLAS ****** -->
+
+
+
+</session-factory>
+
+</hibernate-configuration>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>testtaxi</display-name>
+
+	<!-- PETICION INICIAL DE LA APLICACION -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- ******** ZONA DE CONTROLADORES (SERVLETS) ******* -->
+	<!-- CONTROLADOR PRINCIPAL DE JSF -->
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+	
+	<!-- CONTROLADOR ESPECIFICO PARA ICEFACES 
+	ni idea como controlar esta parte
+	-->
+	<servlet>
+		<servlet-name>Resource Servlet</servlet-name>
+		<servlet-class>com.icesoft.faces.webapp.CompatResourceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Resource Servlet</servlet-name>
+		<url-pattern>/xmlhttp/*</url-pattern>
+	</servlet-mapping>
+	<!-- ******* FIN ZONA DE CONTROLADORES (SERVLETS) ******* -->
+
+
+	<!-- ZONA DE FILTROS -->
+	<!-- filtro para establecer el idioma por defecto que vea el usuario -->
+	<filter>
+		<description>En caso de que no se tenga la traduccion del alguno de los idiomas preferidos
+		se esteblece un idioma por defecto</description>
+		<filter-name>filtro_idioma</filter-name>
+		<filter-class>com.testtaxi.filtros.Filtro_Idioma</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>filtro_idioma</filter-name>
+		<url-pattern>/index.jsp</url-pattern>
+	</filter-mapping>
+  
+	<filter>
+		<description>Control de seguridad en los accesos a la aplicacion</description>
+		<filter-name>seguridad_URL</filter-name>
+		<filter-class>com.testtaxi.filtros.Proteccion_URL</filter-class>
+		<init-param>
+			<description>indicara la ruta y nombre de fichero de configuracion de accesos no seguros</description>
+			<param-name>ruta_config</param-name>
+			<param-value>seguridad/accesos_noseguros</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>seguridad_URL</filter-name>
+		<url-pattern>/xhtml/*</url-pattern>
+	</filter-mapping>
+  <!--	 -->
+	<!-- FIN ZONA DE FILTROS -->
+
+
+
+
+	<!-- * ZONA DE PARAMETROS INICIALES DE CONFIGURACION DE LA APLICACION * -->
+	<!-- PARAMETROS PROPIOS -->
+	 <context-param>
+    	<description>establece la ruta de los ficheros logs para su posterior uso 
+		en cualquier proceso necesario (registro de usuarios)</description>
+    	<param-name>ruta_logs</param-name>
+    	<param-value>/logs</param-value>
+  	</context-param>
+  	<context-param>
+    	<description>establece la ruta de la bitacora en depuracion que registra las operacion y su
+		seguimiento</description>
+    	<param-name>ruta_seguimiento</param-name>
+    	<param-value>/logs/seguimiento</param-value>
+  	</context-param>
+  
+    <context-param>
+    	<description>establece la ruta de la bitacora en depuracion que registra las operaciones de seguridad y su
+		seguimiento</description>
+    	<param-name>ruta_seguridad</param-name>
+    	<param-value>/logs/seguridad</param-value>
+  	</context-param>
+	
+	
+	<!-- ESTABLECEMOS EL IDIOMA POR DEFECTO EN LA APLICACION (es ESPAÑOL en INGLES fr FRANCES) -->
+	<context-param>
+		<param-name>idioma_por_defecto</param-name>
+		<param-value>es</param-value>
+	</context-param>
+	<!-- INTERESANTES PARA JSF -->
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>server</param-value>
+	</context-param>
+		<context-param>
+			<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+			<param-value>true</param-value>
+	</context-param>
+	<!-- FIN INTERESANTES PARA JSF -->
+
+	<!-- INTERESANTES PARA ICEFACES -->
+	<context-param>
+		<param-name>org.icefaces.coalesceResources</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.icefaces.strictSessionTimeout</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<!-- CAMBIO DE APARIENCIA GENERAL EN LA APLICACION -->
+	<context-param>
+		<param-name>org.icefaces.ace.theme</param-name>
+		<param-value>cupertino</param-value>
+	</context-param>
+	 <!-- HASTA AQUI CAMBIO DE APARIENCIA GENERAL EN LA APLICACION -->
+
+	<!-- PARAMETRO QUE INDICA EL FICHERO DESCRIPTOR DE SPRING -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:com/testtaxi/spring/modelo.xml,
+					classpath:com/testtaxi/spring/managedbean.xml
+		</param-value>
+	</context-param>
+	<!-- ** FIN DE PROCESO DE CARGA DEL APPLICATION CONTEXT DE SPRING ** -->
+		 
+	<!-- SOLO NECESARIOS SI SE VA A USAR EL COMPONENTE DE GOOGLEMAP
+	<context-param>
+		<param-name>com.icesoft.faces.gmapKey</param-name>
+		<param-value>AIzaSyAcAbAa7AL1DLU0785OeWn2byf4XOsm7KM</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.icefaces.ace.gmapKey</param-name>
+		<param-value>AIzaSyAATyWVqT2qNusNGmcVTyQ0QmymkpU-B5o</param-value>
+	</context-param>
+	 -->
+	<!-- * FIN ZONA PARAMETROS INICIALES DE CONFIGURACION DE LA APLICACION * -->
+
+
+	<!-- DEFINICION DE ESCUCHADORES EN EL SERVIDOR -->
+		<!-- ** PROCESO CARGA DEL APPLICATION CONTEXT DE SPRING (OBLIGATORIO) ** -->
+	<!-- CARGA EL APPLICATIONCONTEXT DE SPRING -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<description>Tratamos la carga de los parametros propios de configuracion</description>
+		<listener-class>com.testtaxi.escuchadores.Eventos_ServletContext</listener-class>
+	</listener>
+	<listener>
+		<description>Escuchador de Aplicacion atributos/creacion-destruccion</description>
+		<listener-class>com.testtaxi.escuchadores.rastreo.Rastreo_Aplicacion</listener-class>
+	</listener>
+	<listener>
+		<description>Escuchador eventos de Sesion atributos/creacion-destruccion/activacion</description>
+		<listener-class>com.testtaxi.escuchadores.rastreo.Rastreo_Sesiones</listener-class>
+	</listener>
+	<listener>
+		<description>Escuchador de Peticiones atributos/creacion-destruccion</description>
+		<listener-class>com.testtaxi.escuchadores.rastreo.Rastreo_Peticiones</listener-class>
+	</listener>
+	<!-- HASTA AQUI DEFINICION DE ESCUCHADORES EN EL SERVIDOR -->
+
+
+
+	<!-- DEFINICION DE PAGINA DE ERROR DE LA APLICACION-->
+	<error-page>
+		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+		<location>/xhtml/error.xhtml</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>com.jsfcompref.BadUserException</exception-type>
+		<location>/xhtml/error.xhtml</location>
+	</error-page>
+	<!-- HASTA AQUI DEFINICION DE PAGINA DE ERROR DE LA APLICACION-->
+	
+
+	<!-- DEFINICION DE EXTENSION DE RECURSO (ICONOS DE ICEFACES) 
+	<mime-mapping> 
+		<extension>png</extension> <mime-type>image/png</mime-type> 
+	</mime-mapping> 
+	-->
+
+	<!-- CONFIGURAMOS LA SESION PARA QUE DE MARGEN DE SOBRA A HACER UN EXAMEN -->
+	<session-config>
+	    <session-timeout>60</session-timeout>
+	</session-config>
+
+</web-app>

@@ -1,0 +1,472 @@
+/* .ice-checkboxbutton button {
+                height:24px;
+                width:24px;
+            }
+
+.ice-checkboxbutton button.ui-state-hover  {
+	background: url("#{resource['css/images/checkGrey.png']}") no-repeat;
+	border: none;
+}
+
+.ice-checkboxbutton button.ui-state-active {
+	background: url("#{resource['css/images/check.png']}") no-repeat;
+	border: none;
+}
+
+.ice-checkboxbutton span.ui-state-default {
+	background: url("#{resource['css/images/uncheck.png']}") no-repeat;
+}
+
+.ice-checkboxbutton .ui-state-active .ui-icon {
+	background: transparent;
+}
+*/
+/*.password{
+  font-family:Verdana,sans-serif;
+  height:28px;
+  font-size:19px;
+  width:223px;
+  padding:5px;
+}
+*/
+
+/* agregamos una fuente de dafont, que simula unos leds */
+@font-face {
+    font-family: led_board;
+    src: url(../fonts/led_board/LED2.TTF);
+    font-weight:20;
+}
+
+@font-face {
+    font-family: led;
+    src: url(../fonts/led/led.ttf);
+    font-weight:20;
+}
+
+
+.ui-datatable-odd {
+    background-color:lightgray !important;
+    background-position-y: -1400px; /* IE7 hack */
+}
+    
+    
+.panel_cronometro{
+	width: 95%;
+    text-align: left;
+    
+}            
+.mensaje_error{
+	color:red;
+	margin:8px;
+}
+
+.test_ventana{
+	width: 95%;
+	height: 95%;
+}
+
+
+.cronometro_transcurrido{
+	margin-left: 50px;
+}
+
+/* aqui va el estilo que tendra el reloj */
+.form_input
+{
+	font-family: led_board,led !important;
+	font-size: 20px; 
+	color: lime;
+	border-width: 0;
+	background-color:black;
+	text-align: center;
+	width: 34px;
+}
+
+.input
+{
+	font-family: led_board,led !important;
+	color: lime;
+	font-size: 20px;	 
+	background-color:black;
+	text-align: center;
+	width: 50%;
+}
+
+.mensajes_form{
+		text-align: center;	
+}
+
+.mensajes_ventana{
+		text-align: center;
+}
+
+.mensaje_icono{
+		text-align: left;
+}
+
+.mensaje_texto{
+		text-align: left;
+}
+
+.mensaje_panel{
+		vertical-align:middle;
+		width: auto;	
+		
+}
+
+.mensaje_panel tr:nth-child(odd) {
+		vertical-align:middle;
+		valign: middle;
+}
+.mensaje_panel tr:nth-child(even) {
+		vertical-align:middle;
+}
+
+.mensajes_col_2{
+		vertical-align:middle;
+}
+
+.mensaje_boton{
+		text-align: center;	
+}
+
+
+#contenedor {
+  width: 100%;
+}
+#cabecera {
+}
+#menu {
+  float: left;
+  width: 100%;
+}
+#contenido {
+  float: left;
+  width: 100%;
+  height: 60%
+}
+#pie {
+  width: 100%;
+  clear: both;
+}
+
+.menu_dinamico{
+	vertical-align:middle;
+}
+
+.paginas{
+	vertical-align:middle;
+}
+ 
+ 
+.tabla_pie{
+	margin: auto;
+	text-align: left;
+	vertical-align:text-top;
+	height: auto; 
+	width: auto;
+}
+
+.indicacion_pie{
+	
+}
+
+.link_user{
+	margin-left: 20px;
+}
+
+.link_salir{
+	margin-left: 20px;
+}
+
+
+.ventana_login {
+	/*position: absolute;
+	position: fixed;
+	width: 400px;
+	height: 180px;*/
+}
+
+.mensaje_icono {
+	text-align: right;
+	
+	width: 50px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	margin-left: 1px;
+	margin-right: 1px;
+	height: 50px;
+}
+
+.mensaje_texto {
+
+	text-align: left;
+	display: block;
+}
+
+.foto_centrada{
+		text-align: center;
+}
+
+
+
+.imagen_cabecera_test{
+	height: 150px;
+	width: 200px;
+		
+	display: block;
+	margin-left: auto;
+	margin-right: auto
+}
+
+.objeto_centrado{
+	/*
+	height: 200px;
+	width: 300px;
+
+	margin: auto;
+
+
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+		
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	vertical-align: -webkit-baseline-middle;
+
+	*/
+		
+	display: block;
+	margin-left: auto;
+	margin-right: auto
+	
+
+	
+
+}
+
+.imagen_respuesta{
+	width: 30px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	margin-left: 1px;
+	margin-right: 1px;
+	height: 30px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	vertical-align: -webkit-baseline-middle;
+}
+
+.pregunta_indicaciones{
+	vertical-align: text-top; 
+	margin: 0 0 10px 0;
+	text-align: left;
+}
+
+
+.pregunta_seleccion_respuesta{
+	margin: 0 0 10px 0;
+	text-align: left;
+	width: 100%;
+}
+
+div.Ttbla_centrada{
+	text-align: center;
+}
+ 
+div.tabla_centrada table {
+       margin: 0 auto;
+       text-align: left;
+}
+
+table.respuesta_correcta{
+	background: #afa;
+		width: 100%;
+}
+
+table.respuesta_incorrecta{
+	background: red;
+		width: 100%;
+}
+
+table.pregunta_indicaciones_respuesta{
+	text-align: center;
+}
+
+/*
+table.pregunta_indicaciones_respuesta tr:nth-child(even) {
+text-align: left;
+}
+*/
+
+table.fila_1{
+	background-color: #F5F5F5;
+	width: 100%;
+}
+table.fila_2{
+  	background-color: #EEE;
+	width: 100%;  	
+}
+table.fila_3{
+	background-color: #F5F5F5;
+	width: 100%;
+}
+table.fila_4{
+  	background-color: #EEE;
+	width: 100%;  	
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+	font-size: 1em;
+}
+
+h2.cabecera_test{
+	text-align: center;
+	font-size: 1em;
+}
+
+
+.cabecera_revisión_test{
+	
+}
+
+.lista_link{
+		font-size: 0.8em !important;
+		/*width:100%*/
+}
+
+.tabla_usuarios{
+		font-size: 0.8em !important;
+		width:100%
+}
+
+
+.usuarios_col_1{
+	width: 70%;
+	vertical-align:top;
+}
+
+.usuarios_col_2{
+	width: 30%;
+	vertical-align:top;
+}
+
+.preguntas_col_1{
+	width: 1%;
+}
+
+.preguntas_col_2{
+	width: 99%;
+}
+
+
+table {
+	border-collapse: collapse;
+	vertical-align:top;
+	vertical-align:text-top;
+}
+
+td{
+	vertical-align:middle;
+}
+
+.pregunta_test {
+	margin: 5px 5px 5px 5px;
+	border-style: solid; border-width: 1px; 
+	text-align: left;
+	vertical-align:text-top;
+	border-color: #DDD;
+	height: auto; 
+	width: 98%;
+}
+
+.respuesta{
+	width: 100%;
+}
+
+.respuesta tr:nth-child(odd) {
+	background-color: #F5F5F5;
+}
+.respuesta tr:nth-child(even) {
+  	background-color: #EEE; 	
+}
+
+
+
+.col_1{
+	width: 15%;
+	vertical-align:top;
+}
+
+.col_2{
+	width: 85%;
+	vertical-align:top;
+}
+
+
+
+td.examen_cabecera_1{
+	width: 30%;
+	text-align: left !important;
+	margin-right: 10em;
+}
+
+td.examen_cabecera_2{
+	width: 30%; 
+    text-align: right !important;
+  	margin-right: 10em;
+}
+td.examen_cabecera_3{
+
+	width: 40%;	 
+    text-align: right !important;
+	margin-right: 10em;
+}
+.panel_cuestionario {
+	width: 100%;
+}
+
+
+.info {
+	float: left;
+	margin: 0.5em 0 0.5em 1.2em;
+	width: 8%;
+}
+
+
+.panel_botones {
+	text-align: center;
+	margin: auto !important;
+	width: auto;
+}
+
+.panel_botones_2 {
+	text-align: center;
+	margin: auto !important;
+}
+
+.pie {
+	font-size: 0.8em;
+	text-align: center;
+}

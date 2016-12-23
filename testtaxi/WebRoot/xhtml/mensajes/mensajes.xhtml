@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+	<h:form id="formu_mensajes" styleClass="mensajes_form">
+		<ace:dialog id="ventana_mensajes" header="#{mensajes_bean.cabecera}" closable="true" modal="true" draggable="true" height="#{mensajes_bean.alto}" width="#{mensajes_bean.ancho}" position="center" 
+		visible="#{mensajes_bean.visible}" onHide="#{mensajes_bean.metodo_aceptar_js}" styleClass="mensajes_ventana">
+			<h:panelGrid columns="1" >
+					<h:panelGrid columns="2" styleClass="mensaje_panel" columnClasses="mensajes_col_1,mensajes_col_2">
+						<h:graphicImage id="img" value="#{mensajes_bean.icono_mensaje}" styleClass="mensaje_icono" />
+						<h:outputText id="texto_mensaje" value="#{mensajes_bean.mensaje}" styleClass="mensaje_texto" />
+					</h:panelGrid>
+					<h:panelGrid columns="2" styleClass="panel_botones" columnClasses="mensajes_col_1,mensajes_col_2">
+						<h:commandButton id="boton_mensaje_aceptar" value="#{mensajes_bean.texto_boton_aceptar}" actionListener="#{mensajes_bean.aceptar}" onclick="#{mensajes_bean.metodo_aceptar_js}" />
+						<h:commandButton id="boton_mensaje_cancelar" style="#{mensajes_bean.boton_cancelar_visible}" value="#{mensajes_bean.texto_boton_cancelar}" actionListener="#{mensajes_bean.cancelar}" onclick="#{mensajes_bean.metodo_cancelar_js}" />
+					</h:panelGrid>
+				</h:panelGrid>
+
+		</ace:dialog>
+	</h:form>
+</ui:composition>

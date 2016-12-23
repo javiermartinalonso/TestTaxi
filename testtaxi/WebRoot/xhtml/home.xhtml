@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+
+<f:view encoding="ISO-8859-15">
+	<h:head>
+		<!-- FORMATO PARA EL COMPONENTE DATETIMEENTRY -->
+		<h:outputScript name="javascript/funciones.js" />
+		<!-- ESTILOS PARA LA POSCION DE ALGUNOS CONTENEDORES -->
+		<ice:outputStyle href="/resources/css/posiciones.css"
+			id="estilos_pagina" />
+		<!-- REFRESCO DE TODOS LOS COMPONENTES DE CADA VISTA CON LA INFORMACION DE LA RESPUESTA AJAX -->
+		<icecore:config mandatoryResource="all" />
+	</h:head>
+	<h:body>
+	
+			<h:panelGrid id="login" columns="1"  styleClass="tabla_pie">
+				<ui:include src="/xhtml/mensajes/mensajes.xhtml" />
+				<ui:include src="/xhtml/idioma/idioma.xhtml" />
+				<ui:include src="/xhtml/login/login.xhtml" />  
+				<ui:include src="/xhtml/menu/menu_contenido.xhtml" />
+			</h:panelGrid>
+		
+	</h:body>
+</f:view>
+</html>
